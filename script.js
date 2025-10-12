@@ -1401,3 +1401,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// ===============================================================
+//      FUNCIONALIDAD PARA EL ACORDEÓN DE DETALLES
+// ===============================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const accordionItems = document.querySelectorAll('.accordion-item');
+
+    accordionItems.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        const content = item.querySelector('.accordion-content');
+
+        header.addEventListener('click', () => {
+            const isExpanded = header.getAttribute('aria-expanded') === 'true';
+
+            // Cierra todos los demás items si quieres que solo uno esté abierto a la vez
+            // accordionItems.forEach(otherItem => {
+            //     if (otherItem !== item) {
+            //         otherItem.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+            //         otherItem.querySelector('.accordion-content').style.maxHeight = null;
+            //         otherItem.querySelector('.accordion-content').style.padding = '0 1.5rem';
+            //     }
+            // });
+
+            if (isExpanded) {
+                header.setAttribute('aria-expanded', 'false');
+                content.style.maxHeight = null;
+                content.style.padding = '0 1.5rem';
+            } else {
+                header.setAttribute('aria-expanded', 'true');
+                content.style.maxHeight = content.scrollHeight + 48 + 'px'; // scrollHeight + padding
+                content.style.padding = '1.5rem';
+            }
+        });
+    });
+});
