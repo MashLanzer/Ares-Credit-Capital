@@ -1,14 +1,14 @@
 @echo off
 :: =================================================================
-:: SCRIPT DE DESPLIEGUE ULTRA-RAPIDO v3.3
+:: SCRIPT DE DESPLIEGUE ULTRA-RAPIDO v3.4
 :: Autor: Manus AI
 :: Proyecto: Ares Credit Capital
 :: =================================================================
 
 :: --- CONFIGURACION ---
 set "PROJECT_PATH=d:\Projects\ARES CREDIT CAPITAL"
-:: ¡CAMBIO REALIZADO AQUI! Se cambió 'main' por 'master' para que coincida con tu repositorio.
-set "GIT_BRANCH=master"
+:: ¡CORRECTO! Ahora que la rama local se llama 'main', esto funcionará.
+set "GIT_BRANCH=main"
 set "FIREBASE_PROJECT=ares-credit-capital"
 
 :: --- INICIO DEL PROCESO ---
@@ -25,6 +25,13 @@ echo.
 :: --- PASO 1: COMPROBANDO CAMBIOS ---
 echo  [PASO 1] Comprobando cambios en el proyecto...
 cd /d "%PROJECT_PATH%"
+if %errorlevel% neq 0 (
+    echo.
+    echo  [ERROR] No se pudo encontrar la ruta del proyecto: "%PROJECT_PATH%".
+    echo  [ACCION] Revisa la variable 'PROJECT_PATH' en el script.
+    color 0C
+    goto :END
+)
 git add .
 
 git diff-index --quiet --ignore-cr-at-eol HEAD
@@ -57,7 +64,7 @@ echo  [PASO 2] Guardando cambios con el mensaje: "%COMMIT_MSG%"
 git commit -m "%COMMIT_MSG%"
 if %errorlevel% neq 0 (
     echo.
-    echo  [ERROR] El commit ha fallado. Abortando.
+    echo  [ERROR] El commit ha fallado. Revisa los mensajes de Git.
     color 0C
     goto :END
 )
@@ -68,7 +75,7 @@ echo  [PASO 3] Sincronizando con el repositorio de GitHub...
 git push origin %GIT_BRANCH%
 if %errorlevel% neq 0 (
     echo.
-    echo  [ERROR] La subida a GitHub ha fallado. Abortando.
+    echo  [ERROR] La subida a GitHub ha fallado. Revisa tu conexion y permisos.
     color 0C
     goto :END
 )
@@ -91,13 +98,13 @@ echo  [INFO] Confirmado. Desplegando en Firebase...
 firebase deploy --only hosting --project %FIREBASE_PROJECT%
 if %errorlevel% neq 0 (
     echo.
-    echo  [ERROR] El despliegue a Firebase ha fallado.
+    echo  [ERROR] El despliegue a Firebase ha fallado. Revisa los logs de Firebase.
     color 0C
     goto :END
 )
 
 echo.
-echo  [EXITO] ¡Despliegue completado!
+echo  [EXITO] ¡Despliegue completado con exito!
 color 0A
 
 :: --- FINALIZACION ---
