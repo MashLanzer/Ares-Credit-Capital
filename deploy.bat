@@ -6,7 +6,7 @@
 :: =================================================================
 
 :: --- CONFIGURACION ---
-set "PROJECT_PATH=D:\Projects\ARES CREDIT CAPITAL"
+set "PROJECT_PATH=D:\Projects\ARES CREDIT CAPITAL\public"
 set "GIT_BRANCH=main"
 set "FIREBASE_PROJECT=ares-credit-capital"
 

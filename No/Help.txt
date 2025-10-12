@@ -1,7 +1,7 @@
-cd "d:\Projects\ARES CREDIT CAPITAL"
+cd "d:\Projects\ARES CREDIT CAPITAL\public"
 
 git add .
-git commit -m "Ups"
+git commit -m "KAL"
 git push
 
 
