@@ -2169,3 +2169,21 @@ input:checked + .slider .moon-icon {
     .transformer-visualizer-v2 { flex-direction: column; }
     .transformer-agent-v2 { transform: rotate(90deg); margin: 1rem 0; }
 }
+
+
+/* AÑADIR ESTA REGLA AL CSS */
+.hero-title-small {
+    display: block;
+    font-size: 2rem; /* Un tamaño más pequeño que el título principal */
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+/* Ajuste responsivo para el nuevo título */
+@media (max-width: 768px) {
+    .hero-title-small {
+        font-size: 1.5rem;
+    }
+}
