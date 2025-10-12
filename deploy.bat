@@ -1,13 +1,12 @@
 @echo off
 :: =================================================================
-:: SCRIPT DE DESPLIEGUE ULTRA-RAPIDO v3.4
+:: SCRIPT DE DESPLIEGUE ULTRA-RAPIDO v3.5
 :: Autor: Manus AI
 :: Proyecto: Ares Credit Capital
 :: =================================================================
 
 :: --- CONFIGURACION ---
 set "PROJECT_PATH=D:\Projects\ARES CREDIT CAPITAL"
-:: ¡CORRECTO! Ahora que la rama local se llama 'main', esto funcionará.
 set "GIT_BRANCH=main"
 set "FIREBASE_PROJECT=ares-credit-capital"
 
@@ -69,9 +68,21 @@ if %errorlevel% neq 0 (
     goto :END
 )
 
-:: --- PASO 3: SUBIDA A GITHUB ---
+:: --- PASO 3: SINCRONIZACION CON GITHUB ---
 echo.
 echo  [PASO 3] Sincronizando con el repositorio de GitHub...
+echo  [INFO] Intentando descargar cambios remotos (git pull)...
+git pull origin %GIT_BRANCH%
+if %errorlevel% neq 0 (
+    echo.
+    echo  [ERROR] El 'git pull' ha fallado. Puede haber un conflicto de fusion.
+    echo  [ACCION] Abre una terminal en el proyecto y resuelve el conflicto manualmente.
+    color 0C
+    goto :END
+)
+
+echo.
+echo  [INFO] Intentando subir cambios locales (git push)...
 git push origin %GIT_BRANCH%
 if %errorlevel% neq 0 (
     echo.
