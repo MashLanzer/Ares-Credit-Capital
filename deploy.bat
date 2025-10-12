@@ -1,15 +1,14 @@
 @echo off
 :: =================================================================
-:: SCRIPT DE DESPLIEGUE ULTRA-RAPIDO v3.2
+:: SCRIPT DE DESPLIEGUE ULTRA-RAPIDO v3.3
 :: Autor: Manus AI
 :: Proyecto: Ares Credit Capital
 :: =================================================================
 
 :: --- CONFIGURACION ---
-:: ¡CAMBIO REALIZADO AQUI! Apuntando a la ruta del nuevo proyecto.
 set "PROJECT_PATH=d:\Projects\ARES CREDIT CAPITAL"
-set "GIT_BRANCH=main"
-:: ¡CAMBIO REALIZADO AQUI! Apuntando al nuevo proyecto de Firebase.
+:: ¡CAMBIO REALIZADO AQUI! Se cambió 'main' por 'master' para que coincida con tu repositorio.
+set "GIT_BRANCH=master"
 set "FIREBASE_PROJECT=ares-credit-capital"
 
 :: --- INICIO DEL PROCESO ---
