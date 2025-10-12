@@ -1,4 +1,23 @@
 // =========================================
+//      CONFIGURACIÓN DE FIREBASE
+// =========================================
+const firebaseConfig = {
+  apiKey: "AIzaSyA81sLNp_2zdFtENWnVnKlyJxmQsuktKOY",
+  authDomain: "ares-credit-capital.firebaseapp.com",
+  projectId: "ares-credit-capital",
+  storageBucket: "ares-credit-capital.firebasestorage.app",
+  messagingSenderId: "994953754017",
+  appId: "1:994953754017:web:c258cbded1145ae116c7e0",
+  measurementId: "G-XHT7XVHJXR"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig );
+const db = firebase.firestore();
+
+
+
+// =========================================
 //      CONFIGURACIÓN INICIAL
 // =========================================
 
@@ -754,10 +773,12 @@ class FormManager {
 
 
 
+// Dentro de la clase FormManager
+
 async handleFormSubmission() {
     // --- URLs de tus dos formularios de Formspree ---
-    const endpoint1 = 'https://formspree.io/f/xldpodya'; // <-- REEMPLAZA con tu primera URL
-    const endpoint2 = 'https://formspree.io/f/mzzjkznw'; // <-- REEMPLAZA con tu segunda URL
+    const endpoint1 = 'https://formspree.io/f/xldpodya';
+    const endpoint2 = 'https://formspree.io/f/mzzjkznw';
 
     const formData = new FormData(this.contactForm );
     let isFormValid = true;
@@ -781,8 +802,7 @@ async handleFormSubmission() {
     this.setButtonLoading(submitButton, true);
 
     try {
-        // 2. Crear las dos promesas de envío
-        // Cada `fetch` es una promesa que representa un envío de red.
+        // 2. Crear las dos promesas de envío a Formspree
         const sendToEndpoint1 = fetch(endpoint1, {
             method: 'POST',
             body: formData,
@@ -795,37 +815,54 @@ async handleFormSubmission() {
             headers: { 'Accept': 'application/json' }
         });
 
-        // 3. Esperar a que AMBOS envíos terminen
-        // `Promise.allSettled` espera a que todas las promesas se completen, sin importar si fallan o no.
+        // 3. Esperar a que AMBOS envíos a Formspree terminen
         const results = await Promise.allSettled([sendToEndpoint1, sendToEndpoint2]);
 
-        // 4. Analizar los resultados de los envíos
+        // 4. Analizar los resultados de los envíos de correo
         const [result1, result2] = results;
         const success1 = result1.status === 'fulfilled' && result1.value.ok;
         const success2 = result2.status === 'fulfilled' && result2.value.ok;
 
+        // 5. LÓGICA DE FIREBASE: Guardar si AL MENOS UN correo se envió
+        if (success1 || success2) {
+            const formObject = Object.fromEntries(formData.entries());
+            formObject.timestamp = firebase.firestore.FieldValue.serverTimestamp(); // Añade fecha y hora
+
+            try {
+                // Intenta guardar el documento en la colección 'submissions'
+                await db.collection('submissions').add(formObject);
+                console.log("Formulario guardado en Firestore exitosamente.");
+            } catch (dbError) {
+                console.error("Error al guardar en Firestore:", dbError);
+                // Este error es silencioso para el usuario, pero importante para ti (el desarrollador).
+                // No detiene el flujo, el usuario seguirá viendo el mensaje de éxito del correo.
+            }
+        }
+
+        // 6. Notificar al usuario según el resultado de los correos
         if (success1 && success2) {
             // Caso ideal: Ambos correos se enviaron con éxito.
-            this.showNotification('¡Mensaje enviado exitosamente a ambos destinatarios!', 'success');
+            this.showNotification('¡Mensaje enviado exitosamente!', 'success');
             this.contactForm.reset();
             inputs.forEach(input => this.clearFieldError(input));
             this.animateFormSuccess();
         } else {
-            // Caso de error: Al menos uno de los envíos falló.
+            // Caso de error: Al menos uno de los envíos de correo falló.
             console.error('Resultado del envío 1:', result1);
             console.error('Resultado del envío 2:', result2);
-            this.showNotification('Hubo un problema al enviar el mensaje a uno de los destinatarios. Por favor, intenta de nuevo.', 'warning');
+            this.showNotification('Hubo un problema al enviar el mensaje. Por favor, intenta de nuevo.', 'warning');
         }
 
     } catch (error) {
-        // Este error es para problemas de red, no para errores de Formspree.
+        // Este error captura problemas mayores, como falta de conexión a internet.
         console.error('Error de red al enviar el formulario:', error);
         this.showNotification('Error de conexión. No se pudo enviar el mensaje.', 'error');
     } finally {
-        // 5. Restaurar el botón al estado original
+        // 7. Restaurar el botón al estado original, pase lo que pase.
         this.setButtonLoading(submitButton, false, originalText);
     }
 }
+
 
 
 
