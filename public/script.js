@@ -780,7 +780,7 @@ async handleFormSubmission() {
     const endpoint1 = 'https://formspree.io/f/xldpodya';
     const endpoint2 = 'https://formspree.io/f/mzzjkznw';
 
-    const formData = new FormData(this.contactForm );
+    const formData = new FormData(this.contactForm);
     let isFormValid = true;
 
     // 1. Validar el formulario como antes

@@ -480,37 +480,38 @@ para el Crecimiento</h2>
                             </div>
                         </div>
                     </div>
-                    <div class="contact-form">
-<!-- En la sección #contacto -->
-<form id="contact-form" novalidate aria-labelledby="contact-title">
 
-                            <div class="form-group">
-                                <label for="name" class="sr-only">Nombre completo</label>
-                                <input type="text" id="name" name="name" placeholder="Nombre completo" required aria-required="true">
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="sr-only">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Email" required aria-required="true">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone" class="sr-only">Teléfono</label>
-                                <input type="tel" id="phone" name="phone" placeholder="Teléfono">
-                            </div>
-                            <div class="form-group">
-                                <label for="service" class="sr-only">Servicio de interés</label>
-                                <select id="service" name="service" required aria-required="true">
-                                    <option value="reparacion-credito">Reparación de Crédito</option>
-                                    <option value="financiamiento">Financiamiento Empresarial</option>
-                                    <option value="asesoria">Asesoría Financiera</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="message" class="sr-only">Mensaje</label>
-                                <textarea id="message" name="message" placeholder="Mensaje" rows="4"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-full">Enviar Mensaje</button>
-                        </form>
-                    </div>
+
+<div class="contact-form">
+    <form id="contact-form" novalidate aria-labelledby="contact-title">
+        <div class="form-group">
+            <label for="name" class="sr-only">Nombre completo</label>
+            <input type="text" id="name" name="name" placeholder="Nombre completo" required aria-required="true">
+        </div>
+        <div class="form-group">
+            <label for="email" class="sr-only">Email</label>
+            <input type="email" id="email" name="email" placeholder="Email" required aria-required="true">
+        </div>
+        <div class="form-group">
+            <label for="phone" class="sr-only">Teléfono</label>
+            <input type="tel" id="phone" name="phone" placeholder="Teléfono">
+        </div>
+        <div class="form-group">
+            <label for="service" class="sr-only">Servicio de interés</label>
+            <select id="service" name="service" required aria-required="true">
+                <option value="reparacion-credito">Reparación de Crédito</option>
+                <option value="financiamiento">Financiamiento Empresarial</option>
+                <option value="asesoria">Asesoría Financiera</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="message" class="sr-only">Mensaje</label>
+            <textarea id="message" name="message" placeholder="Mensaje" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Enviar Mensaje</button>
+    </form>
+</div>
+
                 </div>
             </div>
         </section>
@@ -580,9 +581,10 @@ para el Crecimiento</h2>
         }
     </style>
 
-    <!-- Scripts de Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firestore-compat.js"></script>
+<!-- Scripts de Firebase (versión 8, que coincide con la sintaxis usada ) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
 
     <!-- Scripts -->
     <script src="script.js"></script>
