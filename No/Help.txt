@@ -1,4 +1,4 @@
-cd "d:\Projects\ARES CREDIT CAPITAL\public"
+cd "d:\Projects\ARES CREDIT CAPITAL"
 
 git add .
 git commit -m "KAL"

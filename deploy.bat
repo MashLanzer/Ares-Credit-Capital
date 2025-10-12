@@ -1,12 +1,12 @@
 @echo off
 :: =================================================================
-:: SCRIPT DE DESPLIEGUE ULTRA-RAPIDO v3.5
+:: SCRIPT DE DESPLIEGUE ULTRA-RAPIDO v3.6
 :: Autor: Manus AI
 :: Proyecto: Ares Credit Capital
 :: =================================================================
 
 :: --- CONFIGURACION ---
-set "PROJECT_PATH=D:\Projects\ARES CREDIT CAPITAL\public"
+set "PROJECT_PATH=D:\Projects\ARES CREDIT CAPITAL"
 set "GIT_BRANCH=main"
 set "FIREBASE_PROJECT=ares-credit-capital"
 
@@ -27,12 +27,11 @@ cd /d "%PROJECT_PATH%"
 if %errorlevel% neq 0 (
     echo.
     echo  [ERROR] No se pudo encontrar la ruta del proyecto: "%PROJECT_PATH%".
-    echo  [ACCION] Revisa la variable 'PROJECT_PATH' en el script.
     color 0C
     goto :END
 )
-git add .
 
+:: Se comprueba si hay cambios. El 'git add' se moverá más adelante.
 git diff-index --quiet --ignore-cr-at-eol HEAD
 if %errorlevel%==1 (
     goto :CHANGES_FOUND
@@ -60,6 +59,8 @@ if not defined COMMIT_MSG (
 
 echo.
 echo  [PASO 2] Guardando cambios con el mensaje: "%COMMIT_MSG%"
+:: ¡CAMBIO REALIZADO AQUI! 'git add .' se ejecuta justo antes del commit.
+git add .
 git commit -m "%COMMIT_MSG%"
 if %errorlevel% neq 0 (
     echo.
@@ -76,7 +77,6 @@ git pull origin %GIT_BRANCH%
 if %errorlevel% neq 0 (
     echo.
     echo  [ERROR] El 'git pull' ha fallado. Puede haber un conflicto de fusion.
-    echo  [ACCION] Abre una terminal en el proyecto y resuelve el conflicto manualmente.
     color 0C
     goto :END
 )
@@ -86,7 +86,7 @@ echo  [INFO] Intentando subir cambios locales (git push)...
 git push origin %GIT_BRANCH%
 if %errorlevel% neq 0 (
     echo.
-    echo  [ERROR] La subida a GitHub ha fallado. Revisa tu conexion y permisos.
+    echo  [ERROR] La subida a GitHub ha fallado.
     color 0C
     goto :END
 )
@@ -109,7 +109,7 @@ echo  [INFO] Confirmado. Desplegando en Firebase...
 firebase deploy --only hosting --project %FIREBASE_PROJECT%
 if %errorlevel% neq 0 (
     echo.
-    echo  [ERROR] El despliegue a Firebase ha fallado. Revisa los logs de Firebase.
+    echo  [ERROR] El despliegue a Firebase ha fallado.
     color 0C
     goto :END
 )
