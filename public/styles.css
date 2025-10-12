@@ -2187,3 +2187,65 @@ input:checked + .slider .moon-icon {
         font-size: 1.5rem;
     }
 }
+
+
+/* ================================================= */
+/*  ESTILOS CORREGIDOS PARA GOOGLE TRANSLATE WIDGET  */
+/* ================================================= */
+
+/* --- Contenedor Principal del Widget en la Barra de Navegación --- */
+#google_translate_element {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+/* --- Estilo del Selector de Idioma (el botón que se ve) --- */
+.goog-te-gadget-simple {
+    background-color: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+    padding: 0.5rem !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.goog-te-gadget-simple:hover {
+    border-color: var(--primary-color) !important;
+    box-shadow: var(--shadow-md);
+}
+
+/* --- Estilo del Texto Dentro del Selector (ej: "Español") --- */
+.goog-te-gadget-simple .goog-te-menu-value span {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+}
+
+/* --- Ocultar el Logo de Google dentro del selector --- */
+.goog-te-gadget-simple img {
+    display: none !important;
+}
+
+/* --- Ocultar el Banner Superior de Google Translate --- */
+/* Esta es la parte importante: Ocultamos el iframe del banner, no todo el widget */
+iframe.goog-te-banner-frame {
+    display: none !important;
+}
+
+/* --- Ajuste para que el banner no empuje la página hacia abajo --- */
+body {
+    top: 0 !important;
+    position: static !important; /* Previene que Google añada position: relative */
+}
+
+/* --- Ocultar el tooltip "Powered by Google" que aparece al pasar el cursor --- */
+.goog-tooltip {
+    display: none !important;
+}
+.goog-tooltip:hover {
+    display: none !important;
+}
+.goog-text-highlight {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}

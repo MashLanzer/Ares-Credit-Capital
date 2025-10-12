@@ -90,6 +90,9 @@
                         </div>
                     </label>
                 </div>
+
+                <!-- INICIO: Contenedor para el Traductor de Google -->
+<div id="google_translate_element"></div>
                 
                 <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
                     <span class="bar"></span>
@@ -543,11 +546,32 @@ para el Crecimiento</h2>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 ARES Credit Capital Inc. Todos los derechos reservados.</p>
-                <a href="dashboard.html" style="color: var(--text-primary); text-decoration: none; cursor: default;">.</a>
-            </div>
+    <p>&copy; 2024 ARES Credit Capital Inc. Todos los derechos reservados.</p>
+    <a href="dashboard.html" aria-label="Acceso al Dashboard" style="display: block; height: 20px; cursor: default;"></a>
+</div>
+
         </div>
     </footer>
+
+<!-- INICIO: Script del Traductor de Google -->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            {
+                pageLanguage: 'es', // El idioma original de tu página
+                includedLanguages: 'en,es', // Idiomas que quieres ofrecer (inglés y español)
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 
+            'google_translate_element'
+        );
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!-- FIN: Script del Traductor de Google -->
+
+
+
 </body>
     <!-- Screen reader only styles -->
     <style>
