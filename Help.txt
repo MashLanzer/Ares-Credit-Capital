@@ -1,0 +1,7 @@
+cd "d:\Projects\ARES CREDIT CAPITAL"
+
+git add .
+git commit -m "Ups"
+git push
+
+
