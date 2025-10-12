@@ -1537,3 +1537,76 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+
+// =========================================
+//      SISTEMA DE TRADUCCIÓN (i18n)
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const setLanguage = (lang) => {
+        if (!translations[lang]) {
+            console.error(`Idioma no encontrado: ${lang}`);
+            return;
+        }
+
+        // Guardar el idioma seleccionado
+        localStorage.setItem('language', lang);
+
+        // Actualizar textos normales
+        document.querySelectorAll('[data-key]').forEach(element => {
+            const key = element.getAttribute('data-key');
+            if (translations[lang][key]) {
+                element.innerHTML = translations[lang][key];
+            }
+        });
+
+        // Actualizar placeholders de inputs/textareas
+        document.querySelectorAll('[data-key-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-key-placeholder');
+            if (translations[lang][key]) {
+                element.placeholder = translations[lang][key];
+            }
+        });
+        
+        // Actualizar el atributo lang del HTML para SEO y accesibilidad
+        document.documentElement.lang = lang;
+
+        // Actualizar meta tags
+        const descriptionTag = document.querySelector('meta[name="description"]');
+        if (descriptionTag && translations[lang].meta_description) {
+            descriptionTag.content = translations[lang].meta_description;
+        }
+        const keywordsTag = document.querySelector('meta[name="keywords"]');
+        if (keywordsTag && translations[lang].meta_keywords) {
+            keywordsTag.content = translations[lang].meta_keywords;
+        }
+
+        // Marcar el botón de idioma activo
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        });
+    };
+
+    const initializeLanguage = () => {
+        // Asignar evento a los botones de idioma
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+
+        // Detectar idioma al cargar la página
+        const savedLang = localStorage.getItem('language');
+        const browserLang = navigator.language.split('-')[0];
+        
+        // Prioridad: 1. Idioma guardado, 2. Idioma del navegador, 3. Español por defecto
+        const initialLang = savedLang && translations[savedLang] ? savedLang 
+                          : translations[browserLang] ? browserLang 
+                          : 'es';
+                          
+        setLanguage(initialLang);
+    };
+
+    initializeLanguage();
+});

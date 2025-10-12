@@ -96,10 +96,16 @@
                         <i class="fas fa-chevron-down dropdown-chevron"></i>
                     </button>
                     <div class="dropdown-menu" id="more-menu-content" role="menu">
-                        <div class="dropdown-item" role="menuitem">
-                            <label for="language-label">Idioma</label>
-                            <div id="google_translate_element"></div>
-                        </div>
+                        <!-- Dentro de .dropdown-menu -->
+<div class="dropdown-item" role="menuitem">
+    <label id="language-label" data-key="dropdown_language">Idioma</label>
+    <!-- NUEVO SELECTOR DE BANDERAS -->
+    <div class="language-selector">
+        <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
+        <button class="lang-btn" data-lang="en" title="English">🇺🇸</button>
+    </div>
+</div>
+
                         <div class="dropdown-item" role="menuitem">
                             <label for="theme-label">Tema</label>
                             <div class="theme-switch-wrapper">
@@ -576,22 +582,6 @@ para el Crecimiento</h2>
         </div>
     </footer>
 
-<!-- INICIO: Script del Traductor de Google -->
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-            {
-                pageLanguage: 'es', // El idioma original de tu página
-                includedLanguages: 'en,es', // Idiomas que quieres ofrecer (inglés y español)
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 
-            'google_translate_element'
-        );
-    }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<!-- FIN: Script del Traductor de Google -->
 
 
 
@@ -634,6 +624,7 @@ para el Crecimiento</h2>
 
 
     <!-- Scripts -->
+     <script src="translations.js"></script>
     <script src="script.js"></script>
     
     <!-- Performance monitoring -->
