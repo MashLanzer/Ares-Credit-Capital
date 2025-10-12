@@ -126,60 +126,61 @@
         </section>
 
       <!-- =============================================================== -->
-<!--   NUEVA SECCIÓN: EL TRANSFORMADOR DE CRÉDITO (DISEÑO ÚNICO)    -->
+<!--   NUEVA SECCIÓN: TRANSFORMADOR DE CRÉDITO (VERSIÓN CORREGIDA)   -->
 <!-- =============================================================== -->
-<section id="reparacion-credito" class="credit-transformer" aria-labelledby="transformer-title">
+<section id="reparacion-credito" class="credit-transformer-v2" aria-labelledby="transformer-title-v2">
     <div class="container">
         <div class="transformer-header">
-            <h2 id="transformer-title" class="section-title">De Cuestionable a Confiable</h2>
+            <h2 id="transformer-title-v2" class="section-title">De Cuestionable a Confiable</h2>
             <p class="section-subtitle">Nuestro programa exclusivo transforma tu perfil crediticio, eliminando barreras y creando oportunidades.</p>
         </div>
 
         <!-- El visualizador de transformación -->
-        <div class="transformer-visualizer">
-            <!-- Lado Izquierdo: Antes -->
-            <div class="transformer-side before">
-                <div class="side-header">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <h3>Crédito Cuestionable</h3>
-                </div>
-                <div class="side-content">
-                    <p>Información inexacta</p>
-                    <p>Errores de reporte</p>
-                    <p>Cuentas obsoletas</p>
+        <div class="transformer-visualizer-v2">
+            <!-- Lado Izquierdo: Antes (Usa el estilo de las tarjetas existentes) -->
+            <div class="transform-card before">
+                <div class="transform-card-icon"><i class="fas fa-exclamation-circle"></i></div>
+                <h3>Crédito Cuestionable</h3>
+                <ul>
+                    <li>Información inexacta</li>
+                    <li>Errores de reporte</li>
+                    <li>Cuentas obsoletas</li>
+                </ul>
+            </div>
+
+            <!-- El Agente de Transformación Central con Animación -->
+            <div class="transformer-agent-v2">
+                <div class="agent-icon-v2">
+                    <i class="fas fa-key"></i>
+                    <!-- Partículas para la animación de "magia" -->
+                    <div class="sparkle" style="--d:0s;"></div>
+                    <div class="sparkle" style="--d:0.2s;"></div>
+                    <div class="sparkle" style="--d:0.4s;"></div>
                 </div>
             </div>
 
-            <!-- El Agente de Transformación Central -->
-            <div class="transformer-agent">
-                <div class="agent-line"></div>
-                <div class="agent-icon"><i class="fas fa-key"></i></div>
-            </div>
-
-            <!-- Lado Derecho: Después -->
-            <div class="transformer-side after">
-                <div class="side-header">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>Crédito Sólido</h3>
-                </div>
-                <div class="side-content">
-                    <p>Mejores tasas de interés</p>
-                    <p>Acceso a hipotecas</p>
-                    <p>Aprobaciones más rápidas</p>
-                </div>
+            <!-- Lado Derecho: Después (Usa el estilo de las tarjetas existentes) -->
+            <div class="transform-card after">
+                <div class="transform-card-icon"><i class="fas fa-check-circle"></i></div>
+                <h3>Crédito Sólido</h3>
+                <ul>
+                    <li>Mejores tasas de interés</li>
+                    <li>Acceso a hipotecas</li>
+                    <li>Aprobaciones rápidas</li>
+                </ul>
             </div>
         </div>
 
         <!-- Acordeón con el resto de la información -->
-        <div class="transformer-details-accordion">
+        <div class="transformer-details-accordion-v2">
             <!-- Item 1: Proceso -->
-            <div class="accordion-item">
-                <button class="accordion-header" aria-expanded="false">
+            <div class="accordion-item-v2">
+                <button class="accordion-header-v2" aria-expanded="false">
                     <span>Nuestro Proceso en 5 Pasos</span>
                     <i class="fas fa-chevron-down"></i>
                 </button>
-                <div class="accordion-content">
-                    <ol class="detailed-list">
+                <div class="accordion-content-v2">
+                    <ol class="detailed-list-v2">
                         <li><strong>Análisis Inicial:</strong> Identificamos cada detalle de tu historial crediticio.</li>
                         <li><strong>Plan Estratégico:</strong> Diseñamos una estrategia personalizada para tu caso.</li>
                         <li><strong>Disputas Efectivas:</strong> Presentamos y damos seguimiento a las disputas ante las agencias.</li>
@@ -188,29 +189,22 @@
                     </ol>
                 </div>
             </div>
-            <!-- Item 2: Beneficios -->
-            <div class="accordion-item">
-                <button class="accordion-header" aria-expanded="false">
-                    <span>Beneficios de la Suscripción</span>
+            <!-- Item 2: Beneficios y Precio -->
+            <div class="accordion-item-v2">
+                <button class="accordion-header-v2" aria-expanded="false">
+                    <span>Beneficios e Inversión</span>
                     <i class="fas fa-chevron-down"></i>
                 </button>
-                <div class="accordion-content">
-                    <ul class="detailed-list">
+                <div class="accordion-content-v2">
+                    <ul class="detailed-list-v2 benefits">
                         <li><strong>Transparencia Total:</strong> Reportes claros y sin letras pequeñas.</li>
                         <li><strong>Resultados Medibles:</strong> Actualizaciones constantes para que veas tu progreso.</li>
                         <li><strong>Acompañamiento Profesional:</strong> Expertos del sistema financiero de EE.UU. a tu lado.</li>
                     </ul>
-                </div>
-            </div>
-            <!-- Item 3: Inversión -->
-            <div class="accordion-item">
-                <button class="accordion-header" aria-expanded="false">
-                    <span>Inversión Única</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="accordion-content">
-                    <p class="investment-text">Recuperar tu crédito no es un gasto, es la mejor inversión en tu futuro. Nuestro modelo es simple y sin sorpresas.</p>
-                    <p class="investment-price">Pago de suscripción única: <strong>$ [Tu Precio Aquí]</strong> (Sin cargos ocultos ni pagos adicionales)</p>
+                    <div class="investment-details-v2">
+                        <p>Recuperar tu crédito es una inversión en tu futuro. Nuestro modelo es simple y sin sorpresas.</p>
+                        <p class="investment-price-v2">Pago de suscripción única: <strong>$ [Tu Precio Aquí]</strong></p>
+                    </div>
                 </div>
             </div>
         </div>

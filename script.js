@@ -1403,36 +1403,30 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===============================================================
-//      FUNCIONALIDAD PARA EL ACORDEÓN DE DETALLES
+//      FUNCIONALIDAD PARA EL ACORDEÓN V2
 // ===============================================================
 document.addEventListener('DOMContentLoaded', function() {
-    const accordionItems = document.querySelectorAll('.accordion-item');
+    const accordionItems = document.querySelectorAll('.accordion-item-v2');
 
     accordionItems.forEach(item => {
-        const header = item.querySelector('.accordion-header');
-        const content = item.querySelector('.accordion-content');
+        const header = item.querySelector('.accordion-header-v2');
+        const content = item.querySelector('.accordion-content-v2');
 
         header.addEventListener('click', () => {
             const isExpanded = header.getAttribute('aria-expanded') === 'true';
-
-            // Cierra todos los demás items si quieres que solo uno esté abierto a la vez
-            // accordionItems.forEach(otherItem => {
-            //     if (otherItem !== item) {
-            //         otherItem.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
-            //         otherItem.querySelector('.accordion-content').style.maxHeight = null;
-            //         otherItem.querySelector('.accordion-content').style.padding = '0 1.5rem';
-            //     }
-            // });
-
+            
             if (isExpanded) {
                 header.setAttribute('aria-expanded', 'false');
                 content.style.maxHeight = null;
                 content.style.padding = '0 1.5rem';
             } else {
                 header.setAttribute('aria-expanded', 'true');
-                content.style.maxHeight = content.scrollHeight + 48 + 'px'; // scrollHeight + padding
-                content.style.padding = '1.5rem';
+                // Calcula la altura del contenido y añade padding
+                const contentHeight = content.scrollHeight;
+                content.style.maxHeight = `${contentHeight + 48}px`; // 48px = 1.5rem * 2 * 16px/rem
+                content.style.padding = '0 1.5rem 1.5rem 1.5rem';
             }
         });
     });
 });
+
