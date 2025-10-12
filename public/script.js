@@ -750,45 +750,58 @@ class FormManager {
         });
     }
 
-    async handleFormSubmission() {
-        const formData = new FormData(this.contactForm);
-        const formObject = {};
-        let isFormValid = true;
+async handleFormSubmission() {
+    const formData = new FormData(this.contactForm);
+    let isFormValid = true;
 
-        // Validar todos los campos
-        const inputs = this.contactForm.querySelectorAll('input, select, textarea');
-        inputs.forEach(input => {
-            if (!this.validateField(input)) {
-                isFormValid = false;
+    // Validar todos los campos
+    const inputs = this.contactForm.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        if (!this.validateField(input)) {
+            isFormValid = false;
+        }
+    });
+
+    if (!isFormValid) {
+        this.showNotification('Por favor, corrige los errores en el formulario.', 'error');
+        return;
+    }
+
+    const submitButton = this.contactForm.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    
+    this.setButtonLoading(submitButton, true);
+
+    try {
+        // --- INICIO DEL NUEVO CÓDIGO DE ENVÍO ---
+        const response = await fetch(this.contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
             }
-            formObject[input.name] = input.value;
         });
 
-        if (!isFormValid) {
-            this.showNotification('Por favor, corrige los errores en el formulario.', 'error');
-            return;
-        }
-
-        // Simular envío del formulario
-        const submitButton = this.contactForm.querySelector('button[type="submit"]');
-        const originalText = submitButton.textContent;
-        
-        this.setButtonLoading(submitButton, true);
-
-        try {
-            // Simular llamada a API
-            await this.simulateFormSubmission(formObject);
-            
+        if (response.ok) {
+            // Si Formspree confirma que recibió el mensaje
             this.showNotification('¡Mensaje enviado exitosamente! Te contactaremos pronto.', 'success');
             this.contactForm.reset();
+            // Limpiamos los errores visuales que pudieran quedar
+            inputs.forEach(input => this.clearFieldError(input));
             this.animateFormSuccess();
-            
-        } catch (error) {
-            this.showNotification('Error al enviar el mensaje. Por favor, intenta nuevamente.', 'error');
-        } finally {
-            this.setButtonLoading(submitButton, false, originalText);
+        } else {
+            // Si hubo un problema con Formspree
+            throw new Error('Error en la respuesta del servidor.');
         }
+        // --- FIN DEL NUEVO CÓDIGO DE ENVÍO ---
+        
+    } catch (error) {
+        console.error('Error al enviar el formulario:', error);
+        this.showNotification('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.', 'error');
+    } finally {
+        this.setButtonLoading(submitButton, false, originalText);
     }
+}
 
     setButtonLoading(button, isLoading, originalText = 'Enviar Mensaje') {
         if (isLoading) {
