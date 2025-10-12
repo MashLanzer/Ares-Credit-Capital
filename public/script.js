@@ -750,11 +750,19 @@ class FormManager {
         });
     }
 
+
+
+
+
 async handleFormSubmission() {
-    const formData = new FormData(this.contactForm);
+    // --- URLs de tus dos formularios de Formspree ---
+    const endpoint1 = 'https://formspree.io/f/xldpodya'; // <-- REEMPLAZA con tu primera URL
+    const endpoint2 = 'https://formspree.io/f/mzzjkznw'; // <-- REEMPLAZA con tu segunda URL
+
+    const formData = new FormData(this.contactForm );
     let isFormValid = true;
 
-    // Validar todos los campos
+    // 1. Validar el formulario como antes
     const inputs = this.contactForm.querySelectorAll('input, select, textarea');
     inputs.forEach(input => {
         if (!this.validateField(input)) {
@@ -773,35 +781,55 @@ async handleFormSubmission() {
     this.setButtonLoading(submitButton, true);
 
     try {
-        // --- INICIO DEL NUEVO CÓDIGO DE ENVÍO ---
-        const response = await fetch(this.contactForm.action, {
+        // 2. Crear las dos promesas de envío
+        // Cada `fetch` es una promesa que representa un envío de red.
+        const sendToEndpoint1 = fetch(endpoint1, {
             method: 'POST',
             body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
+            headers: { 'Accept': 'application/json' }
         });
 
-        if (response.ok) {
-            // Si Formspree confirma que recibió el mensaje
-            this.showNotification('¡Mensaje enviado exitosamente! Te contactaremos pronto.', 'success');
+        const sendToEndpoint2 = fetch(endpoint2, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        // 3. Esperar a que AMBOS envíos terminen
+        // `Promise.allSettled` espera a que todas las promesas se completen, sin importar si fallan o no.
+        const results = await Promise.allSettled([sendToEndpoint1, sendToEndpoint2]);
+
+        // 4. Analizar los resultados de los envíos
+        const [result1, result2] = results;
+        const success1 = result1.status === 'fulfilled' && result1.value.ok;
+        const success2 = result2.status === 'fulfilled' && result2.value.ok;
+
+        if (success1 && success2) {
+            // Caso ideal: Ambos correos se enviaron con éxito.
+            this.showNotification('¡Mensaje enviado exitosamente a ambos destinatarios!', 'success');
             this.contactForm.reset();
-            // Limpiamos los errores visuales que pudieran quedar
             inputs.forEach(input => this.clearFieldError(input));
             this.animateFormSuccess();
         } else {
-            // Si hubo un problema con Formspree
-            throw new Error('Error en la respuesta del servidor.');
+            // Caso de error: Al menos uno de los envíos falló.
+            console.error('Resultado del envío 1:', result1);
+            console.error('Resultado del envío 2:', result2);
+            this.showNotification('Hubo un problema al enviar el mensaje a uno de los destinatarios. Por favor, intenta de nuevo.', 'warning');
         }
-        // --- FIN DEL NUEVO CÓDIGO DE ENVÍO ---
-        
+
     } catch (error) {
-        console.error('Error al enviar el formulario:', error);
-        this.showNotification('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.', 'error');
+        // Este error es para problemas de red, no para errores de Formspree.
+        console.error('Error de red al enviar el formulario:', error);
+        this.showNotification('Error de conexión. No se pudo enviar el mensaje.', 'error');
     } finally {
+        // 5. Restaurar el botón al estado original
         this.setButtonLoading(submitButton, false, originalText);
     }
 }
+
+
+
+
 
     setButtonLoading(button, isLoading, originalText = 'Enviar Mensaje') {
         if (isLoading) {
@@ -864,6 +892,10 @@ async handleFormSubmission() {
         window.showNotification(message, type);
     }
 }
+
+
+
+
 
 // =========================================
 //      SISTEMA DE NOTIFICACIONES MEJORADO
