@@ -1512,3 +1512,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+// =========================================
+//   FUNCIONALIDAD DEL MENÚ DESPLEGABLE "MÁS"
+// =========================================
+document.addEventListener('DOMContentLoaded', function() {
+    const moreMenuBtn = document.getElementById('more-menu-btn');
+    
+    if (moreMenuBtn) {
+        const dropdown = moreMenuBtn.closest('.dropdown');
+
+        moreMenuBtn.addEventListener('click', function(event) {
+            event.stopPropagation();
+            dropdown.classList.toggle('active');
+            const isExpanded = dropdown.classList.contains('active');
+            moreMenuBtn.setAttribute('aria-expanded', isExpanded);
+        });
+
+        document.addEventListener('click', function(event) {
+            if (dropdown.classList.contains('active') && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+                moreMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+});

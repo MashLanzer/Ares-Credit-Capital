@@ -64,44 +64,67 @@
     <!-- Skip to main content for accessibility -->
     <a href="#inicio" class="skip-link">Saltar al contenido principal</a>
 
-    <!-- Header -->
-    <header class="header" role="banner">
-        <nav class="nav" role="navigation" aria-label="Navegación principal">
-            <div class="nav-container">
-                <div class="nav-logo">
+<!-- ========================================= -->
+<!--        NUEVO HEADER CON MENÚ "MÁS"        -->
+<!-- ========================================= -->
+<header class="header" role="banner">
+    <nav class="nav" role="navigation" aria-label="Navegación principal">
+        <div class="nav-container">
+            <!-- 1. Logo (Izquierda) -->
+            <div class="nav-logo">
+                <a href="#inicio" aria-label="Página de inicio">
                     <h2>ARES <span class="logo-accent">CREDIT CAPITAL</span></h2>
-                </div>
-                <ul class="nav-menu" id="nav-menu" role="menubar">
-                    <li role="none"><a href="#inicio" class="nav-link" role="menuitem">Inicio</a></li>
-                    <li role="none"><a href="#reparacion-credito" class="nav-link" role="menuitem">Crédito</a></li>
-                    <li role="none"><a href="#servicios" class="nav-link" role="menuitem">Servicios</a></li>
-                    <li role="none"><a href="#proceso" class="nav-link" role="menuitem">Proceso</a></li>
-                    <li role="none"><a href="#propuesta-valor" class="nav-link" role="menuitem">Valor</a></li>
-                    <li role="none"><a href="#financiamiento" class="nav-link" role="menuitem">Financiamiento</a></li>
-                    <li role="none"><a href="#contacto" class="nav-link" role="menuitem">Contacto</a></li>
-                </ul>
+                </a>
+            </div>
 
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox" aria-label="Cambiar tema">
-                        <input type="checkbox" id="checkbox" aria-label="Activar modo oscuro" />
-                        <div class="slider round">
-                            <i class="fas fa-sun sun-icon" aria-hidden="true"></i>
-                            <i class="fas fa-moon moon-icon" aria-hidden="true"></i>
+            <!-- 2. Menú de Navegación (Centro) -->
+            <ul class="nav-menu" id="nav-menu" role="menubar">
+                <li role="none"><a href="#inicio" class="nav-link" role="menuitem">Inicio</a></li>
+                <li role="none"><a href="#reparacion-credito" class="nav-link" role="menuitem">Crédito</a></li>
+                <li role="none"><a href="#servicios" class="nav-link" role="menuitem">Servicios</a></li>
+                <li role="none"><a href="#proceso" class="nav-link" role="menuitem">Proceso</a></li>
+                <li role="none"><a href="#financiamiento" class="nav-link" role="menuitem">Financiamiento</a></li>
+                <li role="none"><a href="#contacto" class="nav-link" role="menuitem">Contacto</a></li>
+            </ul>
+
+            <!-- 3. Panel de Acciones (Derecha) -->
+            <div class="nav-actions">
+                <!-- INICIO: Menú Desplegable "Más" -->
+                <div class="dropdown">
+                    <button class="dropdown-toggle" id="more-menu-btn" aria-expanded="false" aria-controls="more-menu-content" aria-label="Más opciones">
+                        Más
+                        <i class="fas fa-chevron-down dropdown-chevron"></i>
+                    </button>
+                    <div class="dropdown-menu" id="more-menu-content" role="menu">
+                        <div class="dropdown-item" role="menuitem">
+                            <label for="language-label">Idioma</label>
+                            <div id="google_translate_element"></div>
                         </div>
-                    </label>
+                        <div class="dropdown-item" role="menuitem">
+                            <label for="theme-label">Tema</label>
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox" aria-label="Cambiar tema" />
+                                    <div class="slider round"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- INICIO: Contenedor para el Traductor de Google -->
-<div id="google_translate_element"></div>
+                <!-- FIN: Menú Desplegable "Más" -->
                 
+                <!-- Botón de Menú Móvil -->
                 <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </button>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
+
+
 
     <!-- Main Content -->
     <main role="main">
@@ -110,7 +133,7 @@
             <div class="hero-container">
                 <div class="hero-content">
                     <h1 id="hero-title" class="hero-title">
-        <span class="text-grandient">Reparamos tu Crédito.</span>
+        <span class="text-grandient"><span class="text-gradient">Reparamos</span> tu Crédito</span>
         Transformamos tu <span class="text-gradient">perfil</span> en <span class="text-gradient">capital</span>.
     </h1>
     <p class="hero-subtitle">
