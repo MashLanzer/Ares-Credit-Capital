@@ -1550,6 +1550,9 @@ document.addEventListener('DOMContentLoaded', function() {
 //      SISTEMA DE TRADUCCIÓN (i18n)
 // =========================================
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- 1. FUNCIÓN PRINCIPAL PARA CAMBIAR IDIOMA ---
+    // La definimos aquí para que esté disponible para initializeLanguage
     const setLanguage = (lang) => {
         if (!translations[lang]) {
             console.error(`Idioma no encontrado: ${lang}`);
@@ -1587,33 +1590,47 @@ document.addEventListener('DOMContentLoaded', () => {
         if (keywordsTag && translations[lang].meta_keywords) {
             keywordsTag.content = translations[lang].meta_keywords;
         }
-
-        // Marcar el botón de idioma activo
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-        });
     };
 
+    // --- 2. FUNCIÓN PARA INICIALIZAR Y CONTROLAR EL SWITCH ---
     const initializeLanguage = () => {
-        // Asignar evento a los botones de idioma
-        document.querySelectorAll('.lang-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const lang = button.getAttribute('data-lang');
-                setLanguage(lang);
+        const langSwitch = document.getElementById('language-switch');
+
+        // Función para actualizar la UI del switch
+        const updateSwitchUI = (lang) => {
+            if (langSwitch) { // Comprobación de seguridad
+                if (lang === 'en') {
+                    langSwitch.classList.add('active');
+                } else {
+                    langSwitch.classList.remove('active');
+                }
+            }
+        };
+
+        // Asignar evento de clic al switch
+        if (langSwitch) {
+            langSwitch.addEventListener('click', () => {
+                const isEnglish = langSwitch.classList.contains('active');
+                const newLang = isEnglish ? 'es' : 'en';
+                
+                setLanguage(newLang);
+                updateSwitchUI(newLang);
             });
-        });
+        }
 
         // Detectar idioma al cargar la página
         const savedLang = localStorage.getItem('language');
         const browserLang = navigator.language.split('-')[0];
         
-        // Prioridad: 1. Idioma guardado, 2. Idioma del navegador, 3. Español por defecto
-        const initialLang = savedLang && translations[savedLang] ? savedLang 
-                          : translations[browserLang] ? browserLang 
+        const initialLang = (savedLang && translations[savedLang]) ? savedLang 
+                          : (translations[browserLang]) ? browserLang 
                           : 'es';
                           
+        // Establece el idioma y la posición inicial del switch
         setLanguage(initialLang);
+        updateSwitchUI(initialLang);
     };
 
+    // --- 3. LLAMAR A LA FUNCIÓN DE INICIALIZACIÓN ---
     initializeLanguage();
 });

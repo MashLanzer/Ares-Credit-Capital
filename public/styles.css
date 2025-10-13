@@ -2502,3 +2502,85 @@ body.dark-mode .dropdown.active .dropdown-toggle {
     border-color: var(--primary-color);
     box-shadow: 0 0 10px rgba(30, 58, 138, 0.3);
 }
+
+
+/* ============================================================ */
+/*   INTERRUPTOR DE IDIOMA MEJORADO (TAMAÑO CONSISTENTE)      */
+/* ============================================================ */
+
+.language-switch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 60px;  /* <<< AJUSTADO: Mismo ancho que el switch de tema */
+    height: 32px; /* <<< AJUSTADO: Misma altura que el switch de tema */
+    background-color: #0055a4; /* Azul como base */
+    border-radius: 16px; /* Mitad de la altura */
+    cursor: pointer;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.4s ease;
+    animation: pulse-shadow-on-hover 2s infinite;
+}
+
+/* Animación de pulsación (sin cambios) */
+@keyframes pulse-shadow-on-hover {
+    0% { box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 0 8px rgba(30, 58, 138, 0); }
+    50% { box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 0 12px rgba(30, 58, 138, 0.3); }
+    100% { box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 0 8px rgba(30, 58, 138, 0); }
+}
+
+/* Cambia el color de fondo cuando está activo (inglés) */
+.language-switch.active {
+    background-color: #c8102e; /* Rojo */
+}
+
+/* Las banderas (opciones de idioma) */
+.language-switch .lang-option {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem; /* <<< AJUSTADO: Tamaño de fuente reducido para el nuevo tamaño */
+    z-index: 1;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Efectos de escala y opacidad (sin cambios) */
+.language-switch .lang-option.es {
+    transform: scale(1);
+    opacity: 1;
+}
+.language-switch .lang-option.en {
+    transform: scale(0.7);
+    opacity: 0.5;
+}
+.language-switch.active .lang-option.es {
+    transform: scale(0.7);
+    opacity: 0.5;
+}
+.language-switch.active .lang-option.en {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* El círculo que se desliza (el "handle") */
+.language-switch .switch-handle {
+    position: absolute;
+    top: 3px;     /* <<< AJUSTADO */
+    left: 3px;    /* <<< AJUSTADO */
+    width: 26px;  /* <<< AJUSTADO: (32px de altura - 6px de padding vertical) */
+    height: 26px; /* <<< AJUSTADO */
+    background: linear-gradient(145deg, #ffffff, #e8e8e8);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    z-index: 2;
+}
+
+/* Mueve el círculo a la derecha cuando está activo */
+.language-switch.active .switch-handle {
+    /* Distancia = ancho total - ancho del círculo - padding izquierdo */
+    /* 60px - 26px - 3px = 31px */
+    transform: translateX(28px) rotate(360deg); /* <<< AJUSTADO */
+}

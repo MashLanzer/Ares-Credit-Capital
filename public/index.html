@@ -99,11 +99,15 @@
                         <!-- Dentro de .dropdown-menu -->
 <div class="dropdown-item" role="menuitem">
     <label id="language-label" data-key="dropdown_language">Idioma</label>
-    <!-- NUEVO SELECTOR DE BANDERAS -->
-    <div class="language-selector">
-        <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
-        <button class="lang-btn" data-lang="en" title="English">🇺🇸</button>
+    
+    <!-- REEMPLAZA EL ANTIGUO SELECTOR POR ESTE NUEVO SWITCH -->
+    <div class="language-switch" id="language-switch" aria-label="Language selector">
+        <div class="lang-option es">🇪🇸</div>
+        <div class="lang-option en">🇺🇸</div>
+        <div class="switch-handle"></div>
     </div>
+    <!-- FIN DEL NUEVO SWITCH -->
+
 </div>
 
                         <div class="dropdown-item" role="menuitem">
