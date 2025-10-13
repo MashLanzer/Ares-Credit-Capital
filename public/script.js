@@ -676,37 +676,44 @@ class FormManager {
         });
     }
 
-    validateField(field) {
-        const value = field.value.trim();
-        let isValid = true;
-        let errorMessage = '';
+// Reemplaza esta función en tu script.js
+validateField(field) {
+    const value = field.value.trim();
+    let isValid = true;
+    let errorMessageKey = ''; // Usaremos una clave de traducción en lugar de un mensaje
 
-        // Validación según el tipo de campo
-        switch (field.type) {
-            case 'email':
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(value)) {
-                    isValid = false;
-                    errorMessage = 'Por favor, ingresa un email válido';
-                }
-                break;
-            case 'tel':
-                const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-                if (value && !phoneRegex.test(value.replace(/\s/g, ''))) {
-                    isValid = false;
-                    errorMessage = 'Por favor, ingresa un teléfono válido';
-                }
-                break;
-            default:
-                if (field.required && !value) {
-                    isValid = false;
-                    errorMessage = 'Este campo es requerido';
-                }
-        }
+    // Obtener el idioma actual
+    const currentLang = localStorage.getItem('language') || 'es';
 
-        this.showFieldValidation(field, isValid, errorMessage);
-        return isValid;
+    // Validación según el tipo de campo
+    switch (field.type) {
+        case 'email':
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                isValid = false;
+                errorMessageKey = 'validation_email';
+            }
+            break;
+        case 'tel':
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            if (value && !phoneRegex.test(value.replace(/\s/g, ''))) {
+                isValid = false;
+                errorMessageKey = 'validation_phone';
+            }
+            break;
+        default:
+            if (field.required && !value) {
+                isValid = false;
+                errorMessageKey = 'validation_required';
+            }
     }
+
+    // Obtener el mensaje traducido
+    const errorMessage = translations[currentLang][errorMessageKey] || '';
+    
+    this.showFieldValidation(field, isValid, errorMessage);
+    return isValid;
+}
 
     showFieldValidation(field, isValid, errorMessage) {
         const formGroup = field.closest('.form-group');

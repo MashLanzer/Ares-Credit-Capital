@@ -20,12 +20,24 @@ const translations = {
     theme_switch_label: "Cambiar tema",
     nav_toggle_label: "Abrir menú de navegación",
 
+        // --- Menú Desplegable "Más" ---
+    dropdown_more: "Más", // << AÑADE ESTA LÍNEA
+    dropdown_language: "Idioma",
+    dropdown_theme: "Tema",
+
     // --- Sección Hero ---
     hero_title_1: "Reparamos tu Crédito.",
     hero_title_2: "Transformamos tu <span class=\"text-gradient\">perfil</span> en <span class=\"text-gradient\">capital</span>.",
     hero_subtitle: "Desde la reparación de tu historial hasta la obtención de financiamiento, somos tu socio estratégico para el crecimiento empresarial.",
     hero_btn_1: "Comenzar Ahora",
     hero_btn_2: "Conocer Más",
+
+    // --- Sección Hero ---
+    hero_title: 'Reparamos tu Crédito Transformamos tu <span class="text-gradient">perfil</span> en <span class="text-gradient">capital</span>.',
+    hero_subtitle: "Desde la reparación de tu historial hasta la obtención de financiamiento, somos tu socio estratégico para el crecimiento empresarial.",
+    hero_btn_1: "Comenzar Ahora",
+    hero_btn_2: "Conocer Más",
+
 
     // --- Sección Transformador de Crédito ---
     credit_transformer_title: "De Cuestionable a Confiable",
@@ -50,6 +62,43 @@ const translations = {
     accordion_benefits_3: "<strong>Acompañamiento Profesional:</strong> Expertos del sistema financiero de EE.UU. a tu lado.",
     accordion_investment_desc: "Recuperar tu crédito es una inversión en tu futuro. Nuestro modelo es simple y sin sorpresas.",
     accordion_investment_price: "Pago de suscripción única: <strong>$ [Tu Precio Aquí]</strong>",
+
+    // --- Sección Propuesta de Valor ---
+value_prop_title: "Tu Socio Estratégico para el Crecimiento",
+value_prop_mission: "Creemos que el acceso al capital no es un privilegio, sino una oportunidad. En <strong>ARES CREDIT CAPITAL INC</strong>, convertimos tu perfil financiero en la llave maestra que abre las puertas del éxito empresarial.",
+value_prop_philosophy1: "<strong>Empoderamiento:</strong> Te damos las herramientas para dominar tus finanzas.",
+value_prop_philosophy2: "<strong>Acompañamiento:</strong> Somos tus socios en cada paso del camino.",
+value_prop_philosophy3: "<strong>Resultados:</strong> Solo ganamos cuando tú ganas. Transparencia total.",
+tab_differentiators: "Qué Nos Diferencia",
+tab_services: "Nuestros Servicios",
+tab_success_model: "Modelo de Éxito",
+differentiators_item1_title: "Experiencia Comprobada",
+differentiators_item1_desc: "Años de éxito en reparación de crédito y estructuración de financiamiento empresarial.",
+differentiators_item2_title: "Conexiones Estratégicas",
+differentiators_item2_desc: "Acceso a una amplia red de instituciones financieras y prestamistas privados.",
+differentiators_item3_title: "Modelo Basado en Éxito",
+differentiators_item3_desc: "Nuestra estructura de honorarios es 100% a riesgo. Si no consigues capital, no pagas.",
+service_1_desc_short: "Mejoramos tu historial para abrirte a mejores oportunidades.",
+service_2_desc_short: "Conseguimos el capital que tu negocio necesita para crecer.",
+service_3_desc_short: "Te guiamos para una salud financiera óptima.",
+success_model_title: "Una Alianza, no una Factura",
+success_model_desc: "Creemos en una verdadera asociación. Nuestro éxito está 100% ligado al tuyo. Por eso, hemos diseñado un modelo de honorarios simple, transparente y completamente a riesgo.",
+success_model_item1: "Solo cobramos una comisión (%) sobre el capital que efectivamente recibes.",
+success_model_item2: "Cero costos iniciales.",
+success_model_item3: "Cero cargos ocultos.",
+success_model_item4: "100% alineados con tu éxito.",
+
+// ... dentro de es: { ... }
+
+// --- Sección Ejemplos de Financiamiento ---
+financing_examples_title: "Ejemplos de Financiamiento",
+financing_item1_title: "Capital de Trabajo",
+financing_item1_desc: "Para operaciones diarias y flujo de efectivo",
+financing_item2_title: "Expansión de Negocio",
+financing_item2_desc: "Para crecimiento y nuevas oportunidades",
+financing_item3_title: "Proyectos Inmobiliarios",
+financing_item3_desc: "Para inversiones en bienes raíces",
+
 
     // --- Sección Servicios ---
     services_title: "Nuestros Servicios",
@@ -78,21 +127,23 @@ const translations = {
     cta_desc: "En ARES CREDIT CAPITAL INC no solo conseguimos capital. Te damos la confianza de tener un aliado estratégico que camina contigo hacia el crecimiento de tu empresa.",
     cta_btn: "Comenzar Ahora",
 
-    // --- Formulario de Contacto ---
-    contact_title: "Hablemos de tu Proyecto",
-    contact_phone_title: "Teléfono / WhatsApp",
-    contact_email_title: "Email",
-    contact_website_title: "Sitio Web",
-    form_name: "Nombre completo",
-    form_email: "Email",
-    form_phone: "Teléfono",
-    form_service: "Servicio de interés",
-    form_service_placeholder: "Servicio de interés",
-    form_message: "Mensaje",
-    form_submit: "Enviar Mensaje",
-    option_credit_repair: "Reparación de Crédito",
-    option_financing: "Financiamiento Empresarial",
-    option_financial_advisory: "Asesoría Financiera",
+// --- Formulario de Contacto ---
+contact_title: "Hablemos de tu Proyecto",
+contact_phone_title: "Teléfono / WhatsApp",
+contact_email_title: "Email",
+contact_website_title: "Sitio Web",
+form_name: "Nombre completo",
+form_email: "Email",
+form_phone: "Teléfono",
+form_message: "Mensaje",
+form_submit: "Enviar Mensaje",
+option_credit_repair: "Reparación de Crédito",
+option_financing: "Financiamiento Empresarial",
+option_financial_advisory: "Asesoría Financiera",
+// --- Mensajes de Validación ---
+validation_required: "Este campo es requerido",
+validation_email: "Por favor, ingresa un email válido",
+validation_phone: "Por favor, ingresa un teléfono válido",
     
     // --- Footer ---
     footer_desc: "Transformamos tu crédito en capital para hacer crecer tu empresa",
@@ -123,6 +174,17 @@ const translations = {
     nav_contacto: "Contact",
     theme_switch_label: "Toggle theme",
     nav_toggle_label: "Open navigation menu",
+
+        // --- Dropdown "More" ---
+    dropdown_more: "More", // << AÑADE ESTA LÍNEA
+    dropdown_language: "Language",
+    dropdown_theme: "Theme",
+
+        // --- Hero Section ---
+    hero_title: 'We Repair Your Credit We transform your <span class="text-gradient">profile</span> into <span class="text-gradient">capital</span>.',
+    hero_subtitle: "From repairing your history to obtaining financing, we are your strategic partner for business growth.",
+    hero_btn_1: "Get Started Now",
+    hero_btn_2: "Learn More",
 
     // --- Hero Section ---
     hero_title_1: "We Repair Your Credit.",
@@ -155,6 +217,43 @@ const translations = {
     accordion_investment_desc: "Recovering your credit is an investment in your future. Our model is simple and without surprises.",
     accordion_investment_price: "One-time subscription payment: <strong>$ [Your Price Here]</strong>",
 
+    // --- Value Proposition Section ---
+value_prop_title: "Your Strategic Partner for Growth",
+value_prop_mission: "We believe that access to capital is not a privilege, but an opportunity. At <strong>ARES CREDIT CAPITAL INC</strong>, we turn your financial profile into the master key that opens the doors to business success.",
+value_prop_philosophy1: "<strong>Empowerment:</strong> We give you the tools to master your finances.",
+value_prop_philosophy2: "<strong>Guidance:</strong> We are your partners every step of the way.",
+value_prop_philosophy3: "<strong>Results:</strong> We only win when you win. Total transparency.",
+tab_differentiators: "What Sets Us Apart",
+tab_services: "Our Services",
+tab_success_model: "Success Model",
+differentiators_item1_title: "Proven Experience",
+differentiators_item1_desc: "Years of success in credit repair and structuring business financing.",
+differentiators_item2_title: "Strategic Connections",
+differentiators_item2_desc: "Access to a wide network of financial institutions and private lenders.",
+differentiators_item3_title: "Success-Based Model",
+differentiators_item3_desc: "Our fee structure is 100% at risk. If you don't get capital, you don't pay.",
+service_1_desc_short: "We improve your history to open doors to better opportunities.",
+service_2_desc_short: "We get the capital your business needs to grow.",
+service_3_desc_short: "We guide you towards optimal financial health.",
+success_model_title: "A Partnership, Not an Invoice",
+success_model_desc: "We believe in a true partnership. Our success is 100% tied to yours. That's why we've designed a simple, transparent, and completely at-risk fee model.",
+success_model_item1: "We only charge a commission (%) on the capital you actually receive.",
+success_model_item2: "Zero upfront costs.",
+success_model_item3: "Zero hidden fees.",
+success_model_item4: "100% aligned with your success.",
+
+// ... dentro de en: { ... }
+
+// --- Financing Examples Section ---
+financing_examples_title: "Financing Examples",
+financing_item1_title: "Working Capital",
+financing_item1_desc: "For daily operations and cash flow",
+financing_item2_title: "Business Expansion",
+financing_item2_desc: "For growth and new opportunities",
+financing_item3_title: "Real Estate Projects",
+financing_item3_desc: "For real estate investments",
+
+
     // --- Services Section ---
     services_title: "Our Services",
     service_1_title: "Credit Repair",
@@ -182,21 +281,23 @@ const translations = {
     cta_desc: "At ARES CREDIT CAPITAL INC we don't just get capital. We give you the confidence of having a strategic ally who walks with you towards the growth of your company.",
     cta_btn: "Get Started Now",
 
-    // --- Contact Form ---
-    contact_title: "Let's Talk About Your Project",
-    contact_phone_title: "Phone / WhatsApp",
-    contact_email_title: "Email",
-    contact_website_title: "Website",
-    form_name: "Full Name",
-    form_email: "Email",
-    form_phone: "Phone",
-    form_service: "Service of Interest",
-    form_service_placeholder: "Service of Interest",
-    form_message: "Message",
-    form_submit: "Send Message",
-    option_credit_repair: "Credit Repair",
-    option_financing: "Business Financing",
-    option_financial_advisory: "Financial Advisory",
+// --- Contact Form ---
+contact_title: "Let's Talk About Your Project",
+contact_phone_title: "Phone / WhatsApp",
+contact_email_title: "Email",
+contact_website_title: "Website",
+form_name: "Full Name",
+form_email: "Email",
+form_phone: "Phone",
+form_message: "Message",
+form_submit: "Send Message",
+option_credit_repair: "Credit Repair",
+option_financing: "Business Financing",
+option_financial_advisory: "Financial Advisory",
+// --- Validation Messages ---
+validation_required: "This field is required",
+validation_email: "Please enter a valid email",
+validation_phone: "Please enter a valid phone number",
     
     // --- Footer ---
     footer_desc: "We transform your credit into capital to grow your business",
