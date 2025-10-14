@@ -2584,3 +2584,420 @@ body.dark-mode .dropdown.active .dropdown-toggle {
     /* 60px - 26px - 3px = 31px */
     transform: translateX(28px) rotate(360deg); /* <<< AJUSTADO */
 }
+
+/* ========================================= */
+/*      ESTILOS PARA EL NUEVO CTA DEL HERO   */
+/* ========================================= */
+
+.hero-cta-form {
+    margin-top: 3rem; /* Espacio por encima del formulario */
+    background: rgba(255, 255, 255, 0.5); /* Fondo semitransparente */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(30, 58, 138, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    animation: fadeInUp 1s ease 1s forwards; /* Animación de entrada */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode .hero-cta-form {
+    background: rgba(31, 41, 55, 0.5); /* Fondo oscuro semitransparente */
+    border-color: rgba(75, 85, 99, 0.7);
+}
+
+.cta-form-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.cta-form-title i {
+    margin-right: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.quick-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.quick-form input[type="email"] {
+    flex-grow: 1; /* El input ocupa el espacio disponible */
+    padding: 14px 18px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.quick-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
+}
+
+.btn-cta-submit {
+    padding: 14px 24px;
+    border: none;
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-cta-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Responsive para el formulario del Hero */
+@media (max-width: 480px) {
+    .quick-form {
+        flex-direction: column; /* Apila los elementos en pantallas pequeñas */
+        gap: 0.75rem;
+    }
+}
+
+/* ========================================= */
+/*      ESTILOS PARA LA BARRA FLOTANTE       */
+/* ========================================= */
+
+.floating-cta-bar {
+    position: fixed;
+    bottom: -100px; /* Inicialmente oculta fuera de la pantalla */
+    left: 0;
+    width: 100%;
+    background: var(--bg-card);
+    border-top: 2px solid var(--primary-color);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 999; /* Por debajo del header pero por encima del resto */
+    padding: 1rem 2rem;
+    transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Animación de entrada/salida */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo para cuando la barra es visible */
+.floating-cta-bar.visible {
+    bottom: 0;
+}
+
+.floating-cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* Para que se adapte en móviles */
+}
+
+.cta-bar-text {
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.cta-bar-text strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.cta-bar-button {
+    padding: 0.6rem 1.2rem; /* Botón un poco más pequeño */
+    font-size: 0.9rem;
+    flex-shrink: 0; /* Evita que el botón se encoja */
+}
+
+.close-cta-bar {
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    border-radius: 50%;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.close-cta-bar:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-tertiary);
+}
+
+/* Ocultar el botón de cerrar en pantallas muy pequeñas para dar espacio */
+@media (max-width: 500px) {
+    .floating-cta-content {
+        justify-content: center;
+        text-align: center;
+        gap: 1rem;
+    }
+    .close-cta-bar {
+        display: none;
+    }
+    .floating-cta-bar {
+        padding: 1rem;
+    }
+}
+
+
+/* ======================================================= */
+/*      NUEVOS ESTILOS PARA LA COLUMNA DE CONTACTO         */
+/* ======================================================= */
+
+/* Mantenemos la grilla de 2 columnas */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Columna de texto | Columna de formulario */
+    gap: 4rem;
+    align-items: center; /* Centra verticalmente el contenido de ambas columnas */
+}
+
+/* Contenedor del nuevo texto explicativo */
+.contact-explanation {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-explanation h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.contact-explanation p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.contact-explanation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* Espacio entre los beneficios */
+}
+
+.contact-explanation ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.contact-explanation ul li i {
+    color: var(--accent-color); /* Verde para los checks */
+    font-size: 1.2rem;
+    margin-top: 5px; /* Alineación vertical del icono */
+}
+
+.contact-privacy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--bg-tertiary);
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem !important;
+    color: var(--text-secondary) !important;
+    margin-top: auto; /* Empuja este elemento hacia abajo */
+}
+
+.contact-privacy i {
+    color: var(--accent-color);
+}
+
+/* Responsive: apilar las columnas en pantallas pequeñas */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .contact-explanation {
+        text-align: center;
+    }
+    .contact-explanation ul {
+        text-align: left; /* Mantenemos la lista alineada a la izquierda para legibilidad */
+        max-width: 450px; /* Evita que la lista se estire demasiado */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .contact-privacy {
+        margin: 1rem auto 0 auto; /* Centrar el badge de privacidad */
+    }
+}
+
+/* ======================================================= */
+/*      NUEVO DISEÑO UNIFICADO PARA SECCIÓN DE CONTACTO    */
+/* ======================================================= */
+
+/* Contenedor principal de la sección */
+.contact {
+    padding: 6rem 0;
+    background: var(--gradient-bg); /* Fondo con gradiente sutil */
+}
+
+/* La "Tarjeta" que unifica ambas columnas */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Columna de texto | Columna de formulario */
+    align-items: center;
+    gap: 3rem;
+    background: var(--bg-card);
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-color);
+}
+
+/* --- Columna Izquierda: Texto Explicativo --- */
+.contact-info {
+    /* Este div ahora solo sirve como contenedor, no necesita mucho estilo */
+}
+
+.contact-explanation h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.contact-explanation p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.contact-explanation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.contact-explanation ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.contact-explanation ul li i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.contact-privacy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--bg-tertiary);
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem !important;
+    color: var(--text-secondary) !important;
+}
+
+.contact-privacy i {
+    color: var(--accent-color);
+}
+
+
+/* --- Columna Derecha: Formulario --- */
+.contact-form {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: none;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background-color: var(--bg-tertiary);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 15px;
+    width: 100%;
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: var(--bg-primary);
+    box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
+}
+
+.contact-form .btn-primary {
+    margin-top: 1rem;
+    padding: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Apila las columnas */
+        padding: 2rem;
+        gap: 3rem;
+    }
+    .contact-explanation {
+        text-align: center;
+    }
+    .contact-explanation ul {
+        text-align: left;
+        max-width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .contact-privacy {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-grid {
+        padding: 1.5rem;
+    }
+}

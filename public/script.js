@@ -1634,3 +1634,86 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 3. LLAMAR A LA FUNCIÓN DE INICIALIZACIÓN ---
     initializeLanguage();
 });
+
+// =======================================================
+//   FUNCIONALIDAD PARA EL FORMULARIO RÁPIDO DEL HERO
+// =======================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const heroQuickForm = document.getElementById('hero-quick-form');
+    
+    if (heroQuickForm) {
+        heroQuickForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Previene el envío normal del formulario
+            
+            const heroEmailInput = document.getElementById('hero-email');
+            const emailValue = heroEmailInput.value;
+
+            if (emailValue) {
+                // Guarda el email en localStorage para usarlo después
+                localStorage.setItem('prefilled_email', emailValue);
+                
+                // Redirige al usuario a la sección de contacto
+                window.location.hash = '#contacto';
+                
+                // Pequeña espera para que el scroll termine antes de rellenar
+                setTimeout(() => {
+                    const mainContactEmailInput = document.querySelector('#contacto #email');
+                    if (mainContactEmailInput) {
+                        mainContactEmailInput.value = emailValue;
+                        // Opcional: Enfocar el siguiente campo, como el de mensaje
+                        document.querySelector('#contacto #name').focus();
+                    }
+                    // Limpiar el localStorage para no rellenarlo siempre
+                    localStorage.removeItem('prefilled_email');
+                }, 800); // 800ms coincide con la duración del smooth scroll
+            }
+        });
+    }
+
+    // Comprobar si hay un email guardado al cargar la página (por si el hash ya es #contacto)
+    const prefilledEmail = localStorage.getItem('prefilled_email');
+    if (prefilledEmail && window.location.hash === '#contacto') {
+        const mainContactEmailInput = document.querySelector('#contacto #email');
+        if (mainContactEmailInput) {
+            mainContactEmailInput.value = prefilledEmail;
+            document.querySelector('#contacto #name').focus();
+        }
+        localStorage.removeItem('prefilled_email');
+    }
+});
+
+
+// =======================================================
+//   LÓGICA PARA LA BARRA FLOTANTE DE CTA
+// =======================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const ctaBar = document.getElementById('floating-cta-bar');
+    const closeButton = document.getElementById('close-cta-bar');
+    
+    if (ctaBar && closeButton) {
+        // --- Lógica para mostrar la barra con moderación ---
+        const showBarOnScroll = () => {
+            // Muestra la barra si el usuario ha hecho scroll más de 400px
+            // Y si no la ha cerrado previamente en esta sesión
+            if (window.scrollY > 400 && sessionStorage.getItem('ctaBarClosed') !== 'true') {
+                ctaBar.classList.add('visible');
+            } else {
+                // Opcional: Ocultar si el usuario vuelve arriba
+                ctaBar.classList.remove('visible');
+            }
+        };
+
+        // --- Lógica para cerrar la barra ---
+        const closeBar = () => {
+            ctaBar.classList.remove('visible');
+            // Guardar en sessionStorage para que no vuelva a aparecer en esta sesión de navegación
+            sessionStorage.setItem('ctaBarClosed', 'true');
+            // Quitar el listener de scroll para optimizar, ya no es necesario
+            window.removeEventListener('scroll', showBarOnScroll);
+        };
+
+        // Asignar los eventos
+        window.addEventListener('scroll', showBarOnScroll);
+        closeButton.addEventListener('click', closeBar);
+    }
+});

@@ -144,6 +144,24 @@ option_financial_advisory: "Asesoría Financiera",
 validation_required: "Este campo es requerido",
 validation_email: "Por favor, ingresa un email válido",
 validation_phone: "Por favor, ingresa un teléfono válido",
+
+// --- Hero Section (claves adicionales) ---
+hero_cta_title: '<i class="fas fa-rocket"></i> Obtén tu Consulta Gratuita',
+hero_cta_email_placeholder: "Ingresa tu email",
+hero_cta_button: "Calificar Ahora",
+
+// --- Barra Flotante de CTA ---
+floating_bar_strong: "¿Listo para empezar?",
+floating_bar_text: "Obtén tu consulta gratuita hoy mismo.",
+floating_bar_button: "Solicitar Consulta",
+
+// --- Texto Explicativo del Formulario de Contacto ---
+contact_form_title: "Un Formulario, Múltiples Oportunidades",
+contact_form_desc1: "Este no es un formulario de contacto cualquiera. Es el primer paso para desbloquear el potencial financiero de tu empresa. Al completarlo, nuestro sistema nos permite:",
+contact_form_item1: "<strong>Analizar tu perfil</strong> de manera rápida y precisa.",
+contact_form_item2: "<strong>Asignarte al especialista adecuado</strong> para tu caso (crédito o financiamiento).",
+contact_form_item3: "<strong>Preparar tu consulta gratuita</strong> con información relevante, ahorrándote tiempo.",
+contact_form_privacy: '<i class="fas fa-lock"></i> Tu información es 100% confidencial.',
     
     // --- Footer ---
     footer_desc: "Transformamos tu crédito en capital para hacer crecer tu empresa",
@@ -298,6 +316,24 @@ option_financial_advisory: "Financial Advisory",
 validation_required: "This field is required",
 validation_email: "Please enter a valid email",
 validation_phone: "Please enter a valid phone number",
+
+// --- Hero Section (additional keys) ---
+hero_cta_title: '<i class="fas fa-rocket"></i> Get Your Free Consultation',
+hero_cta_email_placeholder: "Enter your email",
+hero_cta_button: "Qualify Now",
+
+// --- Contact Form Explanatory Text ---
+contact_form_title: "One Form, Multiple Opportunities",
+contact_form_desc1: "This isn't just any contact form. It's the first step to unlocking your company's financial potential. By completing it, our system allows us to:",
+contact_form_item1: "<strong>Analyze your profile</strong> quickly and accurately.",
+contact_form_item2: "<strong>Assign you to the right specialist</strong> for your specific case (credit or financing).",
+contact_form_item3: "<strong>Prepare your free consultation</strong> with relevant information, saving you time.",
+contact_form_privacy: '<i class="fas fa-lock"></i> Your information is 100% confidential.',
+
+// --- Floating CTA Bar ---
+floating_bar_strong: "Ready to start?",
+floating_bar_text: "Get your free consultation today.",
+floating_bar_button: "Request Consultation",
     
     // --- Footer ---
     footer_desc: "We transform your credit into capital to grow your business",
