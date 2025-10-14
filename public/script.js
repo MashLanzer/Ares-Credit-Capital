@@ -1692,38 +1692,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // =======================================================
-//   LÓGICA PARA LA BARRA FLOTANTE DE CTA
+//   LÓGICA FINAL Y UNIFICADA PARA LA BARRA FLOTANTE DE CTA
 // =======================================================
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Obtenemos todos los elementos necesarios
     const ctaBar = document.getElementById('floating-cta-bar');
     const closeButton = document.getElementById('close-cta-bar');
-    
-    if (ctaBar && closeButton) {
-        // --- Lógica para mostrar la barra con moderación ---
-        const showBarOnScroll = () => {
-            // Muestra la barra si el usuario ha hecho scroll más de 400px
-            // Y si no la ha cerrado previamente en esta sesión
-            if (window.scrollY > 400 && sessionStorage.getItem('ctaBarClosed') !== 'true') {
-                ctaBar.classList.add('visible');
-            } else {
-                // Opcional: Ocultar si el usuario vuelve arriba
-                ctaBar.classList.remove('visible');
-            }
-        };
+    const footer = document.querySelector('.footer');
 
-        // --- Lógica para cerrar la barra ---
-        const closeBar = () => {
-            ctaBar.classList.remove('visible');
-            // Guardar en sessionStorage para que no vuelva a aparecer en esta sesión de navegación
-            sessionStorage.setItem('ctaBarClosed', 'true');
-            // Quitar el listener de scroll para optimizar, ya no es necesario
-            window.removeEventListener('scroll', showBarOnScroll);
-        };
-
-        // Asignar los eventos
-        window.addEventListener('scroll', showBarOnScroll);
-        closeButton.addEventListener('click', closeBar);
+    // Si falta alguno de los elementos, no hacemos nada.
+    if (!ctaBar || !closeButton || !footer) {
+        return;
     }
+
+    // --- Lógica principal para gestionar la visibilidad de la barra ---
+    const handleBarVisibility = () => {
+        // Si el usuario ya cerró la barra en esta sesión, detenemos la función.
+        if (sessionStorage.getItem('ctaBarClosed') === 'true') {
+            return;
+        }
+
+        // Calculamos si el footer está visible en la pantalla.
+        const footerPosition = footer.getBoundingClientRect().top;
+        const isFooterVisible = footerPosition < window.innerHeight;
+
+        // Aplicamos la lógica combinada:
+        if (isFooterVisible) {
+            // PRIORIDAD 1: Si el footer es visible, la barra SIEMPRE se oculta.
+            ctaBar.classList.remove('visible');
+        } else if (window.scrollY > 400) {
+            // PRIORIDAD 2: Si el footer no es visible y el scroll es suficiente, la barra se muestra.
+            ctaBar.classList.add('visible');
+        } else {
+            // PRIORIDAD 3: Si no se cumplen las anteriores (estamos arriba), la barra se oculta.
+            ctaBar.classList.remove('visible');
+        }
+    };
+
+    // --- Lógica para cerrar la barra de forma permanente en la sesión ---
+    const closeBarPermanently = () => {
+        ctaBar.classList.remove('visible');
+        sessionStorage.setItem('ctaBarClosed', 'true');
+        // Optimizamos quitando el listener de scroll, ya que no se volverá a mostrar.
+        window.removeEventListener('scroll', handleBarVisibility);
+    };
+
+    // Asignamos los eventos a las funciones correspondientes.
+    window.addEventListener('scroll', handleBarVisibility);
+    closeButton.addEventListener('click', closeBarPermanently);
 });
 
 

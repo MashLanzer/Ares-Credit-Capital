@@ -3169,3 +3169,181 @@ body.dark-mode .hero-cta-form {
     color: var(--text-tertiary);
     cursor: pointer;
 }
+
+
+/* ======================================================= */
+/*      NUEVO DISEÑO PARA EL FOOTER (MISIÓN + ENLACES)     */
+/* ======================================================= */
+
+/* Grilla principal del footer, ahora con dos columnas bien definidas */
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Columna de misión más ancha */
+    gap: 4rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color-hover);
+}
+
+/* Columna de la misión (antes footer-logo) */
+.footer-mission h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer-mission p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-tertiary);
+    max-width: 500px; /* Para mejor legibilidad del párrafo largo */
+}
+
+/* Columna de enlaces rápidos (sin muchos cambios, pero definimos su lugar) */
+.footer-links h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links ul li a {
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: var(--secondary-color); /* Naranja al hacer hover */
+    transform: translateX(5px);
+}
+
+/* Ocultamos la clase que ya no usamos, por si acaso */
+.footer-contact {
+    display: none;
+}
+
+/* Responsive para el nuevo footer */
+@media (max-width: 992px) {
+    .footer-content {
+        grid-template-columns: 1fr; /* Se apila en una columna */
+        gap: 3rem;
+        text-align: center;
+    }
+    .footer-mission p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .footer-links ul {
+        padding-left: 0; /* Aseguramos que no haya padding en móvil */
+    }
+}
+
+/* ======================================================= */
+/*      DISEÑO FINAL PARA FOOTER HÍBRIDO (3 COLUMNAS)      */
+/* ======================================================= */
+
+.footer-content {
+    display: grid;
+    /* Define una grilla flexible de 3 columnas */
+    grid-template-columns: 1.2fr 1.5fr 1fr; 
+    gap: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color-hover);
+    margin-bottom: 2rem;
+    align-items: flex-start; /* Alinea los elementos al inicio */
+}
+
+/* Columna 1: Identidad (Logo y Tagline) */
+.footer-identity h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+.footer-identity p {
+    font-size: 1rem;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+}
+
+/* Columna 2: Pilares de Misión */
+.footer-pillars-condensed {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.pillar-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.pillar-item i {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    width: 24px;
+    text-align: center;
+}
+.pillar-item span {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-tertiary);
+}
+.pillar-item strong {
+    color: white;
+    font-weight: 600;
+}
+
+/* Columna 3: Enlaces Rápidos */
+.footer-links h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
+}
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-links ul li {
+    margin-bottom: 0.75rem;
+}
+.footer-links ul li a {
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.footer-links ul li a:hover {
+    color: var(--secondary-color);
+    transform: translateX(5px);
+}
+
+/* Ocultar clases que ya no se usan */
+.footer-contact {
+    display: none;
+}
+
+/* Responsive para el nuevo footer */
+@media (max-width: 992px) {
+    .footer-content {
+        grid-template-columns: 1fr; /* Apila todo en una columna */
+        gap: 3rem;
+        text-align: center;
+    }
+    .footer-pillars-condensed {
+        text-align: left; /* Mantiene el texto de los pilares alineado a la izquierda */
+        max-width: 400px;
+        margin: 0 auto; /* Centra el bloque de pilares */
+    }
+    .footer-links ul {
+        padding-left: 0;
+    }
+}

@@ -181,7 +181,17 @@ chatbot_go_to_form: "Sí, llevarme al formulario",
 validation_required: "Este campo es requerido",
 validation_email: "Por favor, ingresa un email válido",
 validation_phone: "Por favor, ingresa un teléfono válido",
+
+// --- Footer Mejorado ---
+footer_mission_statement: "En ARES, no solo reparamos tu crédito; lo transformamos en la herramienta más poderosa para tu crecimiento. Creemos que cada negocio merece acceso al capital necesario para prosperar. Nuestra misión es derribar las barreras financieras, convirtiendo tu perfil crediticio en la llave que abre las puertas del éxito empresarial.",
     
+// --- Footer Híbrido ---
+footer_tagline: "Transformamos tu crédito en la llave de tu éxito.",
+footer_pillar1: "No solo reparamos, <strong>transformamos</strong> tu crédito.",
+footer_pillar2: "Derribamos barreras para que <strong>accedas al capital</strong>.",
+footer_pillar3: "Convertimos tu perfil en <strong>crecimiento empresarial</strong>.",
+
+
     // --- Footer ---
     footer_desc: "Transformamos tu crédito en capital para hacer crecer tu empresa",
     footer_links_title: "Enlaces Rápidos",
@@ -370,7 +380,17 @@ floating_bar_button: "Request Consultation",
 validation_required: "This field is required",
 validation_email: "Please enter a valid email",
 validation_phone: "Please enter a valid phone number",
+
+// --- Enhanced Footer ---
+footer_mission_statement: "At ARES, we don't just repair your credit; we transform it into the most powerful tool for your growth. We believe every business deserves access to the capital needed to thrive. Our mission is to break down financial barriers, turning your credit profile into the key that unlocks business success.",
     
+// --- Hybrid Footer ---
+footer_tagline: "We turn your credit into the key to your success.",
+footer_pillar1: "We don't just repair, we <strong>transform</strong> your credit.",
+footer_pillar2: "We break down barriers so you can <strong>access capital</strong>.",
+footer_pillar3: "We turn your profile into <strong>business growth</strong>.",
+
+
     // --- Footer ---
     footer_desc: "We transform your credit into capital to grow your business",
     footer_links_title: "Quick Links",

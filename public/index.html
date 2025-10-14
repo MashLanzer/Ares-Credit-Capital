@@ -556,7 +556,7 @@
     <form id="contact-form" novalidate aria-labelledby="contact-title">
         <div class="form-group">
             <label for="name" class="sr-only">Nombre completo</label>
-            <input type="text" id="name" name="name" placeholder="Nombre completo" required aria-required="true" data-key-placeholder="form_name">
+        <input type="text" id="name" name="name" placeholder="Nombre completo" required aria-required="true" data-key-placeholder="form_name" autocomplete="name">
         </div>
         <div class="form-group">
             <label for="email" class="sr-only">Email</label>
@@ -587,38 +587,58 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>ARES <span class="logo-accent">CREDIT CAPITAL</span></h3>
-            <p data-key="footer_desc">Transformamos tu crédito en capital para hacer crecer tu empresa</p>
+<!-- ======================================================= -->
+<!--      FOOTER HÍBRIDO (MISIÓN VISUAL + ENLACES)         -->
+<!-- ======================================================= -->
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Columna 1: Logo y Tagline -->
+            <div class="footer-identity">
+                <h3>ARES <span class="logo-accent">CREDIT CAPITAL</span></h3>
+                <p data-key="footer_tagline">Transformamos tu crédito en la llave de tu éxito.</p>
+            </div>
+
+            <!-- Columna 2: Pilares de la Misión -->
+            <div class="footer-pillars-condensed">
+                <div class="pillar-item">
+                    <i class="fas fa-tools"></i>
+                    <span data-key="footer_pillar1">No solo reparamos, <strong>transformamos</strong> tu crédito.</span>
                 </div>
-                <div class="footer-links">
-            <h4 data-key="footer_links_title">Enlaces Rápidos</h4>
-                    <ul>
-                <li><a href="#inicio" data-key="nav_inicio">Inicio</a></li>
-                <li><a href="#reparacion-credito" data-key="nav_credito">Crédito</a></li>
-                <li><a href="#servicios" data-key="nav_servicios">Servicios</a></li>
-                <li><a href="#proceso" data-key="nav_proceso">Proceso</a></li>
-                <li><a href="#financiamiento" data-key="nav_financiamiento">Financiamiento</a></li>
-                <li><a href="#contacto" data-key="nav_contacto">Contacto</a></li>
-            </ul>
+                <div class="pillar-item">
+                    <i class="fas fa-door-open"></i>
+                    <span data-key="footer_pillar2">Derribamos barreras para que <strong>accedas al capital</strong>.</span>
                 </div>
-                <div class="footer-contact">
-<h4 data-key="nav_contacto">Contacto</h4>
-                    <p><i class="fas fa-phone" aria-hidden="true"></i> 786-742-6222</p>
-                    <p><i class="fas fa-envelope" aria-hidden="true"></i> arescreditcapital@gmail.com</p>
+                <div class="pillar-item">
+                    <i class="fas fa-rocket"></i>
+                    <span data-key="footer_pillar3">Convertimos tu perfil en <strong>crecimiento empresarial</strong>.</span>
                 </div>
             </div>
-            <div class="footer-bottom">
-        <p data-key="footer_copyright">&copy; 2024 ARES Credit Capital Inc. Todos los derechos reservados.</p>
-    <a href="dashboard.html" aria-label="Acceso al Dashboard" style="display: block; height: 20px; cursor: default;"></a>
-</div>
 
+            <!-- Columna 3: Enlaces Rápidos -->
+            <div class="footer-links">
+                <h4 data-key="footer_links_title">Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#inicio" data-key="nav_inicio">Inicio</a></li>
+                    <li><a href="#reparacion-credito" data-key="nav_credito">Crédito</a></li>
+                    <li><a href="#servicios" data-key="nav_servicios">Servicios</a></li>
+                    <li><a href="#proceso" data-key="nav_proceso">Proceso</a></li>
+                    <li><a href="#financiamiento" data-key="nav_financiamiento">Financiamiento</a></li>
+                    <li><a href="#contacto" data-key="nav_contacto">Contacto</a></li>
+                </ul>
+            </div>
+             </div>
+              </div>
+
+        <!-- El footer-bottom se mantiene sin cambios -->
+        <div class="footer-bottom">
+            <p data-key="footer_copyright">&copy; 2024 ARES Credit Capital Inc. Todos los derechos reservados.</p>
+            <a href="dashboard.html" aria-label="Acceso al Dashboard" style="display: block; height: 20px; cursor: default;"></a>
         </div>
-    </footer>
+    </div>
+</footer>
+
+
 
 
 <!-- ========================================= -->
