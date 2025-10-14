@@ -493,6 +493,10 @@ class NavigationManager {
         this.setupSmoothScrolling();
         this.setupScrollEffects();
         this.setupActiveSection();
+
+                // AÑADE ESTA LÍNEA PARA HACER LA FUNCIÓN ACCESIBLE
+        window.smoothScrollToTarget = this.smoothScrollTo.bind(this);
+
     }
 
     setupMobileNavigation() {
@@ -677,36 +681,40 @@ class FormManager {
     }
 
 // Reemplaza esta función en tu script.js
+// Reemplaza esta función en tu script.js, dentro de la clase FormManager
+
 validateField(field) {
     const value = field.value.trim();
     let isValid = true;
-    let errorMessageKey = ''; // Usaremos una clave de traducción en lugar de un mensaje
+    let errorMessageKey = ''; // Usaremos una clave de traducción
 
-    // Obtener el idioma actual
     const currentLang = localStorage.getItem('language') || 'es';
 
-    // Validación según el tipo de campo
-    switch (field.type) {
-        case 'email':
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(value)) {
-                isValid = false;
-                errorMessageKey = 'validation_email';
-            }
-            break;
-        case 'tel':
-            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-            if (value && !phoneRegex.test(value.replace(/\s/g, ''))) {
-                isValid = false;
-                errorMessageKey = 'validation_phone';
-            }
-            break;
-        default:
-            if (field.required && !value) {
-                isValid = false;
-                errorMessageKey = 'validation_required';
-            }
+    // --- LÓGICA DE VALIDACIÓN ACTUALIZADA ---
+    if (field.required && !value) {
+        // 1. Primero, comprueba si un campo requerido está vacío
+        isValid = false;
+        errorMessageKey = 'validation_required';
+    } else if (field.type === 'email' && value) {
+        // 2. Si tiene valor y es un email, valida el formato
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            isValid = false;
+            errorMessageKey = 'validation_email';
+        }
+    } else if (field.type === 'tel' && value) {
+        // 3. Si tiene valor y es un teléfono, valida el formato
+        // Este regex es más flexible, permite espacios, guiones y paréntesis
+        const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+        if (!phoneRegex.test(value)) {
+            isValid = false;
+            errorMessageKey = 'validation_phone';
+        }
     }
+    
+    
+   
+
 
     // Obtener el mensaje traducido
     const errorMessage = translations[currentLang][errorMessageKey] || '';
@@ -1715,5 +1723,104 @@ document.addEventListener('DOMContentLoaded', () => {
         // Asignar los eventos
         window.addEventListener('scroll', showBarOnScroll);
         closeButton.addEventListener('click', closeBar);
+    }
+});
+
+
+// =======================================================
+//   LÓGICA FINAL Y CORREGIDA v2 PARA EL CHATBOT
+// =======================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const chatbotBody = document.getElementById('chatbot-body');
+    const chatbotOptions = document.getElementById('chatbot-options');
+    const chatbotGreeting = document.getElementById('chatbot-greeting');
+    const closeGreetingBtn = document.getElementById('close-greeting');
+
+    if (!chatbotToggle) return;
+
+    const getCurrentLang = () => localStorage.getItem('language') || 'es';
+
+    const addMessage = (text, type = 'bot') => {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chat-message ${type}-message`;
+        messageDiv.innerHTML = text;
+        chatbotBody.appendChild(messageDiv);
+        setTimeout(() => { chatbotBody.scrollTop = chatbotBody.scrollHeight; }, 10);
+    };
+
+    const showOptions = (options) => {
+        chatbotOptions.innerHTML = '';
+        options.forEach(option => {
+            const button = document.createElement('button');
+            button.className = 'chat-option-btn';
+            button.dataset.key = option.key;
+            button.innerHTML = translations[getCurrentLang()][option.key];
+            
+            button.onclick = () => {
+                const lang = getCurrentLang();
+                addMessage(translations[lang][option.key], 'user');
+                chatbotOptions.innerHTML = '';
+
+                if (option.action === 'redirect') {
+                    // *** CORRECCIÓN DEFINITIVA ***
+                    // Usamos la función de scroll manual para máxima fiabilidad.
+                    const targetElement = document.getElementById('contacto');
+                    if (targetElement && window.smoothScrollToTarget) {
+                        const headerHeight = document.querySelector('.header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                        window.smoothScrollToTarget(targetPosition);
+                    }
+                    toggleChatbot(false);
+                } else {
+                    setTimeout(() => {
+                        addMessage(translations[lang][option.responseKey]);
+                        setTimeout(() => {
+                            addMessage(translations[lang]['chatbot_final_prompt']);
+                            showOptions([
+                                { key: 'chatbot_go_to_form', action: 'redirect' }
+                            ]);
+                        }, 1000);
+                    }, 500);
+                }
+            };
+            chatbotOptions.appendChild(button);
+        });
+    };
+
+    const startChat = () => {
+        const lang = getCurrentLang();
+        chatbotBody.innerHTML = '';
+        chatbotOptions.innerHTML = '';
+        addMessage(translations[lang]['chatbot_initial_message']);
+        showOptions([
+            { key: 'chatbot_option_credit', responseKey: 'chatbot_credit_reply' },
+            { key: 'chatbot_option_financing', responseKey: 'chatbot_financing_reply' },
+            { key: 'chatbot_option_other', responseKey: 'chatbot_other_reply' }
+        ]);
+    };
+
+    const toggleChatbot = (forceState) => {
+        const isActive = chatbotWindow.classList.contains('active');
+        const shouldBeActive = typeof forceState === 'boolean' ? forceState : !isActive;
+
+        if (shouldBeActive) {
+            if (!isActive) { startChat(); }
+            chatbotWindow.classList.add('active');
+            chatbotToggle.classList.add('active');
+            if (chatbotGreeting) chatbotGreeting.style.display = 'none';
+        } else {
+            chatbotWindow.classList.remove('active');
+            chatbotToggle.classList.remove('active');
+        }
+    };
+
+    chatbotToggle.addEventListener('click', () => toggleChatbot());
+    if (closeGreetingBtn) {
+        closeGreetingBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            chatbotGreeting.style.display = 'none';
+        });
     }
 });

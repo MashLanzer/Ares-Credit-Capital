@@ -564,7 +564,7 @@
         </div>
         <div class="form-group">
             <label for="phone" class="sr-only">Teléfono</label>
-            <input type="tel" id="phone" name="phone" placeholder="Teléfono" data-key-placeholder="form_phone">
+        <input type="tel" id="phone" name="phone" placeholder="Teléfono" required aria-required="true" data-key-placeholder="form_phone">
         </div>
         <div class="form-group">
             <label for="service" class="sr-only">Servicio de interés</label>
@@ -637,6 +637,41 @@
 <!-- ========================================= -->
 <!--         BARRA FLOTANTE DE CTA (FIN)       -->
 <!-- ========================================= -->
+
+
+<!-- ========================================= -->
+<!--        CHATBOT PARA GENERACIÓN DE LEADS     -->
+<!-- ========================================= -->
+<div id="chatbot-container">
+    <!-- La ventana del chat (inicialmente oculta) -->
+    <div id="chatbot-window" class="chatbot-window">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar">🤖</div>
+            <div>
+                <div class="chatbot-title" data-key="chatbot_title">Asistente ARES</div>
+                <div class="chatbot-status" data-key="chatbot_status">En línea</div>
+            </div>
+        </div>
+        <div id="chatbot-body" class="chatbot-body">
+            <!-- Los mensajes se insertarán aquí con JS -->
+        </div>
+        <div id="chatbot-options" class="chatbot-options">
+            <!-- Las opciones de botones se insertarán aquí con JS -->
+        </div>
+    </div>
+
+    <!-- La burbuja para abrir/cerrar el chat -->
+    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Abrir chat">
+        <i class="fas fa-comments icon-open"></i>
+        <i class="fas fa-times icon-close"></i>
+    </button>
+    
+    <!-- El saludo proactivo (inicialmente oculto) -->
+    <div id="chatbot-greeting" class="chatbot-greeting">
+        <span data-key="chatbot_greeting">¡Hola! ¿Necesitas ayuda?</span>
+        <button id="close-greeting" class="close-greeting">&times;</button>
+    </div>
+</div>
 
 
 </body>

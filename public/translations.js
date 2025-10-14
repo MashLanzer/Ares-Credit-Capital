@@ -162,6 +162,25 @@ contact_form_item1: "<strong>Analizar tu perfil</strong> de manera rápida y pre
 contact_form_item2: "<strong>Asignarte al especialista adecuado</strong> para tu caso (crédito o financiamiento).",
 contact_form_item3: "<strong>Preparar tu consulta gratuita</strong> con información relevante, ahorrándote tiempo.",
 contact_form_privacy: '<i class="fas fa-lock"></i> Tu información es 100% confidencial.',
+
+// --- Chatbot ---
+chatbot_title: "Asistente ARES",
+chatbot_status: "En línea",
+chatbot_greeting: "¡Hola! ¿Necesitas ayuda?",
+chatbot_initial_message: "¡Hola! Soy el asistente virtual de ARES. ¿En qué puedo ayudarte hoy?",
+chatbot_option_credit: "Reparar mi crédito",
+chatbot_option_financing: "Buscar financiamiento",
+chatbot_option_other: "Otra consulta",
+chatbot_credit_reply: "¡Excelente! La reparación de crédito es el primer paso hacia un futuro financiero sólido. Para darte la mejor asesoría, necesitamos algunos datos.",
+chatbot_financing_reply: "¡Perfecto! Estamos listos para ayudarte a conseguir el capital que necesitas. Para empezar, necesitamos conocer un poco más sobre tu proyecto.",
+chatbot_other_reply: "Entendido. Para cualquier otra consulta, la mejor forma de ayudarte es a través de nuestro formulario de contacto. Un especialista revisará tu caso.",
+chatbot_final_prompt: "Por favor, completa nuestro formulario seguro y nos pondremos en contacto a la brevedad. ¿Te gustaría ir al formulario ahora?",
+chatbot_go_to_form: "Sí, llevarme al formulario",
+
+// --- Mensajes de Validación ---
+validation_required: "Este campo es requerido",
+validation_email: "Por favor, ingresa un email válido",
+validation_phone: "Por favor, ingresa un teléfono válido",
     
     // --- Footer ---
     footer_desc: "Transformamos tu crédito en capital para hacer crecer tu empresa",
@@ -260,8 +279,6 @@ success_model_item2: "Zero upfront costs.",
 success_model_item3: "Zero hidden fees.",
 success_model_item4: "100% aligned with your success.",
 
-// ... dentro de en: { ... }
-
 // --- Financing Examples Section ---
 financing_examples_title: "Financing Examples",
 financing_item1_title: "Working Capital",
@@ -330,10 +347,29 @@ contact_form_item2: "<strong>Assign you to the right specialist</strong> for you
 contact_form_item3: "<strong>Prepare your free consultation</strong> with relevant information, saving you time.",
 contact_form_privacy: '<i class="fas fa-lock"></i> Your information is 100% confidential.',
 
+// --- Chatbot ---
+chatbot_title: "ARES Assistant",
+chatbot_status: "Online",
+chatbot_greeting: "Hi! Need help?",
+chatbot_initial_message: "Hello! I'm the ARES virtual assistant. How can I help you today?",
+chatbot_option_credit: "Repair my credit",
+chatbot_option_financing: "Find financing",
+chatbot_option_other: "Other inquiry",
+chatbot_credit_reply: "Excellent! Credit repair is the first step towards a solid financial future. To give you the best advice, we need some information.",
+chatbot_financing_reply: "Perfect! We are ready to help you get the capital you need. To get started, we need to know a little more about your project.",
+chatbot_other_reply: "Understood. For any other inquiries, the best way to assist you is through our contact form. A specialist will review your case.",
+chatbot_final_prompt: "Please complete our secure form, and we will get in touch with you shortly. Would you like to go to the form now?",
+chatbot_go_to_form: "Yes, take me to the form",
+
 // --- Floating CTA Bar ---
 floating_bar_strong: "Ready to start?",
 floating_bar_text: "Get your free consultation today.",
 floating_bar_button: "Request Consultation",
+
+// --- Validation Messages ---
+validation_required: "This field is required",
+validation_email: "Please enter a valid email",
+validation_phone: "Please enter a valid phone number",
     
     // --- Footer ---
     footer_desc: "We transform your credit into capital to grow your business",
