@@ -27,7 +27,7 @@ const translations = {
 
     // --- Sección Hero ---
     hero_title_1: "Reparamos tu Crédito.",
-    hero_title_2: "Transformamos tu <span class=\"text-gradient\">perfil</span> en <span class=\"text-gradient\">capital</span>.",
+    hero_title_2: "Transformamos tu<span class=\"text-gradient\">perfil</span> en <span class=\"text-gradient\">capital</span>.",
     hero_subtitle: "Desde la reparación de tu historial hasta la obtención de financiamiento, somos tu socio estratégico para el crecimiento empresarial.",
     hero_btn_1: "Comenzar Ahora",
     hero_btn_2: "Conocer Más",
