@@ -191,6 +191,36 @@ footer_pillar1: "No solo reparamos, <strong>transformamos</strong> tu crédito."
 footer_pillar2: "Derribamos barreras para que <strong>accedas al capital</strong>.",
 footer_pillar3: "Convertimos tu perfil en <strong>crecimiento empresarial</strong>.",
 
+// --- Pilares de la Transformación ---
+pillars_subtitle: "Así convertimos cada desafío crediticio en una ventaja para tu futuro.",
+pillar1_before_title: "Información Inexacta",
+pillar1_before_desc: "Los errores en tu reporte te cuestan dinero y oportunidades valiosas.",
+pillar1_after_title: "Perfil Preciso",
+pillar1_after_desc: "Disputamos cada error para presentar un perfil financiero sólido y confiable.",
+pillar2_before_title: "Cuentas Obsoletas",
+pillar2_before_desc: "Cuentas antiguas y deudas pasadas afectan negativamente tu puntaje actual.",
+pillar2_after_title: "Historial Optimizado",
+pillar2_after_desc: "Gestionamos la eliminación de información desactualizada para un perfil limpio.",
+pillar3_before_title: "Oportunidades Perdidas",
+pillar3_before_desc: "Un mal crédito te cierra las puertas a las mejores tasas y condiciones del mercado.",
+pillar3_after_title: "Acceso a Capital",
+pillar3_after_desc: "Un crédito sólido te abre las puertas al financiamiento que impulsa tu negocio.",
+
+// --- Servicios con Expansión ---
+service_1_desc_expanded: "Analizamos tu reporte, disputamos errores, negociamos con acreedores y optimizamos cada factor para elevar tu puntaje y abrirte nuevas puertas financieras.",
+service_1_feature1: "Disputa de errores",
+service_1_feature2: "Optimización de puntaje",
+service_1_feature3: "Asesoría personalizada",
+service_2_desc_expanded: "Estructuramos tu caso, te conectamos con nuestra red de prestamistas y te guiamos para conseguir capital de trabajo, líneas de crédito o préstamos para tu expansión.",
+service_2_feature1: "Capital de trabajo",
+service_2_feature2: "Préstamos SBA",
+service_2_feature3: "Líneas de crédito",
+service_3_desc_expanded: "Te ofrecemos una guía experta y estratégica para tomar decisiones financieras inteligentes, planificar a futuro y construir un patrimonio empresarial sólido y duradero.",
+service_3_feature1: "Planificación financiera",
+service_3_feature2: "Estructura de deuda",
+service_3_feature3: "Proyecciones de crecimiento",
+service_cta: "Solicitar Servicio",
+
 
     // --- Footer ---
     footer_desc: "Transformamos tu crédito en capital para hacer crecer tu empresa",
@@ -389,6 +419,36 @@ footer_tagline: "We turn your credit into the key to your success.",
 footer_pillar1: "We don't just repair, we <strong>transform</strong> your credit.",
 footer_pillar2: "We break down barriers so you can <strong>access capital</strong>.",
 footer_pillar3: "We turn your profile into <strong>business growth</strong>.",
+
+// --- Transformation Pillars ---
+pillars_subtitle: "This is how we turn every credit challenge into an advantage for your future.",
+pillar1_before_title: "Inaccurate Information",
+pillar1_before_desc: "Errors on your report cost you money and valuable opportunities.",
+pillar1_after_title: "Accurate Profile",
+pillar1_after_desc: "We dispute every error to present a solid and reliable financial profile.",
+pillar2_before_title: "Obsolete Accounts",
+pillar2_before_desc: "Old accounts and past debts negatively affect your current score.",
+pillar2_after_title: "Optimized History",
+pillar2_after_desc: "We manage the removal of outdated information for a clean profile.",
+pillar3_before_title: "Missed Opportunities",
+pillar3_before_desc: "Bad credit closes the door to the best market rates and conditions.",
+pillar3_after_title: "Access to Capital",
+pillar3_after_desc: "A strong credit profile opens the doors to financing that boosts your business.",
+
+// --- Expanding Services ---
+service_1_desc_expanded: "We analyze your report, dispute errors, negotiate with creditors, and optimize every factor to raise your score and open new financial doors for you.",
+service_1_feature1: "Error disputes",
+service_1_feature2: "Score optimization",
+service_1_feature3: "Personalized advice",
+service_2_desc_expanded: "We structure your case, connect you with our network of lenders, and guide you to secure working capital, lines of credit, or loans for your expansion.",
+service_2_feature1: "Working capital",
+service_2_feature2: "SBA loans",
+service_2_feature3: "Lines of credit",
+service_3_desc_expanded: "We offer expert and strategic guidance to make smart financial decisions, plan for the future, and build a solid and lasting business legacy.",
+service_3_feature1: "Financial planning",
+service_3_feature2: "Debt structure",
+service_3_feature3: "Growth projections",
+service_cta: "Request Service",
 
 
     // --- Footer ---
